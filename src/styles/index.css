@@ -1,17 +1,56 @@
+:root {
+  --tw-bg-opacity: 1; /* OPACITY HACK FOR CSS VARS */
+  --tw-text-opacity: 1;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.light {
+  --color-fore-primary: hsla(218, 23%, 23%, var(--tw-text-opacity));
+  --color-fore-secondary: hsla(218, 17%, 35%, var(--tw-text-opacity));
+  --color-fore-subtle: hsla(218, 17%, 35%, var(--tw-text-opacity));
+
+  --color-back-primary: hsla(0, 100%, 100%, var(--tw-bg-opacity));
+  --color-back-secondary: hsla(210, 38%, 95%, var(--tw-bg-opacity));
+  --color-back-subtle: hsla(210, 38%, 92%, var(--tw-bg-opacity));
+
+  --color-accent: hsla(211, 61%, 43%, var(--tw-text-opacity));
+  --color-back-accent: hsla(172, 67%, 70%, var(--tw-bg-opacity));
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.dark {
+  --color-fore-primary: hsla(214, 32%, 91%, var(--tw-text-opacity));
+  --color-fore-secondary: hsla(214, 32%, 91%, var(--tw-text-opacity));
+  --color-fore-subtle: hsla(214, 20%, 69%, var(--tw-text-opacity));
+
+  --color-back-primary: hsla(221, 39%, 11%, var(--tw-bg-opacity));
+  --color-back-secondary: hsla(221, 39%, 8%, var(--tw-bg-opacity));
+  --color-back-subtle: hsla(221, 39%, 16%, var(--tw-bg-opacity));
+
+  --color-accent: hsla(172, 67%, 70%, var(--tw-text-opacity));
+  --color-back-accent: hsla(172, 67%, 70%, var(--tw-bg-opacity));
+}
+
+@layer base {
+  ::-moz-selection {
+    background: var(--color-accent);
+    color: var(--color-back-primary);
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-back-primary);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-back-primary);
+    color: var(--color-fore-primary);
+    @apply overflow-x-hidden antialiased;
+  }
 }

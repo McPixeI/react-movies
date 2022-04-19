@@ -1,8 +1,25 @@
 import Button from './components/UI/Button'
+import { useDarkMode } from './utils/hooks/use-dark-mode'
+
+// Provisionally here for testing purposes
+function ThemeToggle ({ className }) {
+  const [isDark, setIsDark] = useDarkMode()
+
+  return (
+    <Button
+      aria-label={isDark ? 'Activate Light Mode' : 'Activate Dark Mode'}
+      onClick={() => setIsDark(!isDark)}
+      className='mb-8'
+    >
+      {isDark ? 'dark theme' : 'light theme'}
+    </Button>
+  )
+}
 
 function App () {
   return (
     <>
+      <ThemeToggle />
       <h1 className='text-3xl font-bold my-6'>Botones</h1>
       <h2 className='text-2xl font-bold my-4'>Primary</h2>
 
