@@ -54,5 +54,7 @@ Button.propTypes = {
   variant: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
   type: PropTypes.oneOf(['submit', 'button']),
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  loading: PropTypes.bool,
+  className: PropTypes.string
 }
