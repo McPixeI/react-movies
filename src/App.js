@@ -8,13 +8,11 @@ function ThemeToggle ({ className }) {
   const [isDark, setIsDark] = useDarkMode()
 
   return (
-    <Button
+    <Toggle
       aria-label={isDark ? 'Activate Light Mode' : 'Activate Dark Mode'}
+      text={isDark ? 'dark theme' : 'light theme'}
       onClick={() => setIsDark(!isDark)}
-      className='mb-8'
-    >
-      {isDark ? 'dark theme' : 'light theme'}
-    </Button>
+    />
   )
 }
 
@@ -98,7 +96,9 @@ function App () {
         className='mb-2'
       />
       <h2 className='text-2xl font-bold my-4'>Toggle</h2>
-      <Toggle />
+      <Toggle name='toggle-demo-1' text='Púlsame' />
+      <h2 className='text-2xl font-bold my-4'>Toggle disabled</h2>
+      <Toggle name='toggle-demo-2' text='Disabled' disabled />
     </>
   )
 }
