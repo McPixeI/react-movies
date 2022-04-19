@@ -59,10 +59,43 @@ function App () {
       <TextInput size='md' label='Input label' className='mb-4' />
       <TextInput size='lg' label='Input label' className='mb-4' />
 
-      <h2 className='text-2xl font-bold my-4'>Inputs without label</h2>
-      <TextInput size='sm' className='mb-4' />
-      <TextInput size='md' className='mb-4' />
-      <TextInput size='lg' className='mb-4' />
+      <h2 className='text-2xl font-bold my-4'>
+        Inputs without label & placeholder
+      </h2>
+      <TextInput size='sm' placeholder='placeholder text...' className='mb-4' />
+      <TextInput size='md' placeholder='placeholder text...' className='mb-4' />
+      <TextInput size='lg' placeholder='placeholder text...' className='mb-4' />
+
+      <h2 className='text-2xl font-bold my-4'>Disabled</h2>
+      <TextInput
+        size='md'
+        placeholder='placeholder text...'
+        className='mb-4'
+        disabled
+      />
+      <h2 className='text-2xl font-bold my-4'>Type password</h2>
+      <TextInput
+        size='lg'
+        type='password'
+        value='1234'
+        placeholder='placeholder text...'
+        className='mb-4'
+      />
+      <h2 className='text-2xl font-bold my-4'>Addon</h2>
+      <TextInput
+        size='md'
+        addon='asdf'
+        placeholder='placeholder text...'
+        className='mb-4'
+      />
+      <h2 className='text-2xl font-bold my-4'>Error message</h2>
+      <TextInput
+        size='md'
+        addon='asdf'
+        error='This is an error message'
+        placeholder='placeholder text...'
+        className='mb-2'
+      />
     </>
   )
 }
