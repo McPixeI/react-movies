@@ -1,5 +1,6 @@
 import Button from './components/UI/Button'
 import { TextInput } from './components/UI/Forms/TextInput/TextInput'
+import Toggle from './components/UI/Forms/Toggle'
 import { useDarkMode } from './utils/hooks/use-dark-mode'
 
 // Provisionally here for testing purposes
@@ -53,7 +54,7 @@ function App () {
         Secondary disabled
       </Button>
 
-      <h2 className='text-3xl font-bold mt-8 my-4'>Inputs</h2>
+      <h2 className='text-3xl font-bold mt-8 my-4'>Forms</h2>
       <h2 className='text-2xl font-bold my-4'>Inputs with label</h2>
       <TextInput size='sm' label='Input label' className='mb-4' />
       <TextInput size='md' label='Input label' className='mb-4' />
@@ -96,6 +97,8 @@ function App () {
         placeholder='placeholder text...'
         className='mb-2'
       />
+      <h2 className='text-2xl font-bold my-4'>Toggle</h2>
+      <Toggle />
     </>
   )
 }

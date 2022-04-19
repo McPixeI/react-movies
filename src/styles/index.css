@@ -34,6 +34,7 @@
 }
 
 @layer base {
+  /*Custom base styles*/
   ::-moz-selection {
     background: var(--color-accent);
     color: var(--color-back-primary);
@@ -53,4 +54,33 @@
     color: var(--color-fore-primary);
     @apply overflow-x-hidden antialiased;
   }
+
+  .toggle-bg:after {
+    background: #fff;
+    border-color: #d1d5db;
+    border-radius: 9999px;
+    border-width: 1px;
+    box-shadow: var(--tw-ring-inset) 0 0 0 calc(var(--tw-ring-offset-width)) var(--tw-ring-color);
+    content: "";
+    height: 1.25rem;
+    left: 0.125rem;
+    position: absolute;
+    top: 0.125rem;
+    transition-duration: .15s;
+    transition-property: background-color,border-color,color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;
+    width: 1.25rem;
+  }
+
+  input:checked+.toggle-bg:after {
+    border-color: #fff;
+    transform: translateX(100%);
+  }
+
+  input:checked+.toggle-bg {
+    background: theme('colors.primary');
+    border-color: theme('colors.primary');
+  }
 }
+
+
+
