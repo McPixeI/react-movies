@@ -6,7 +6,7 @@ import { forwardRef } from 'react'
 export const Button = forwardRef(
   (
     {
-      children,
+      label,
       variant = 'primary',
       size = 'md',
       type = 'button',
@@ -43,14 +43,14 @@ export const Button = forwardRef(
         {...rest}
       >
         {loading && <Spinner />}
-        {children}
+        {label}
       </button>
     )
   }
 )
 
 Button.propTypes = {
-  children: PropTypes.node.isRequired,
+  label: PropTypes.string.isRequired,
   variant: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
   type: PropTypes.oneOf(['submit', 'button']),

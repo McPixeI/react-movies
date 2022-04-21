@@ -80,17 +80,10 @@ function App () {
         placeholder='placeholder text...'
         className='mb-4'
       />
-      <h2 className='text-2xl font-bold my-4'>Addon</h2>
-      <TextInput
-        size='md'
-        addon='asdf'
-        placeholder='placeholder text...'
-        className='mb-4'
-      />
+
       <h2 className='text-2xl font-bold my-4'>Error message</h2>
       <TextInput
         size='md'
-        addon='asdf'
         error='This is an error message'
         placeholder='placeholder text...'
         className='mb-2'
