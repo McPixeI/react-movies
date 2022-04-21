@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Button } from '../Button/Button'
 import { Card, CardBody, CardHeading } from './Card'
 
 export default {
@@ -7,7 +7,22 @@ export default {
   component: Card
 }
 
-const Template = args => (
+const BasicTemplate = args => (
+  <Card {...args}>
+    <CardBody>
+      <h5 class='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
+        Heading text
+      </h5>
+      <p class='mb-3 font-normal text-gray-700 dark:text-gray-400'>
+        We can put whatever we want inside every Card child, for example, a
+        button:
+      </p>
+      <Button size='md'>Button</Button>
+    </CardBody>
+  </Card>
+)
+
+const WithHeadingTemplate = args => (
   <Card {...args}>
     <CardHeading>
       <img
@@ -27,5 +42,12 @@ const Template = args => (
   </Card>
 )
 
-export const Default = Template.bind({})
-Default.args = {}
+export const Basic = BasicTemplate.bind({})
+
+export const WithHeading = WithHeadingTemplate.bind({})
+WithHeadingTemplate.args = {}
+
+export const CardFullLink = WithHeadingTemplate.bind({})
+CardFullLink.args = {
+  link: 'https://www.google.com'
+}

@@ -1,7 +1,9 @@
-function Card ({ children }) {
+import PropTypes from 'prop-types'
+
+function Card ({ children, link }) {
   return (
     <div class='max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700'>
-      <a href='#'>{children}</a>
+      {link ? <a href={link}>{children}</a> : <>{children}</>}
     </div>
   )
 }
@@ -15,3 +17,8 @@ function CardBody ({ children }) {
 }
 
 export { Card, CardHeading, CardBody }
+
+Card.propTypes = {
+  children: PropTypes.any,
+  link: PropTypes.string
+}

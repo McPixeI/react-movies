@@ -19,43 +19,43 @@ export const Primary = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
   variant: 'primary',
-  label: 'Button'
+  children: 'Button'
 }
 
 export const Secondary = Template.bind({})
 Secondary.args = {
   variant: 'secondary',
-  label: 'Button'
+  children: 'Button'
 }
 
 export const Large = Template.bind({})
 Large.args = {
   size: 'lg',
-  label: 'Button'
+  children: 'Button'
 }
 
 export const Medium = Template.bind({})
 Medium.args = {
   size: 'md',
-  label: 'Button'
+  children: 'Button'
 }
 
 export const Small = Template.bind({})
 Small.args = {
   size: 'sm',
-  label: 'Button'
+  children: 'Button'
 }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
   size: 'md',
-  label: 'Button',
+  children: 'Button',
   disabled: true
 }
 
 export const Loading = Template.bind({})
 Loading.args = {
   size: 'md',
-  label: 'Button',
+  children: 'Button',
   loading: true
 }
