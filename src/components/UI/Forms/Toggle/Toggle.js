@@ -46,8 +46,6 @@ export const Toggle = ({
 
 Toggle.propTypes = {
   name: PropTypes.string.isRequired,
-  checkedText: PropTypes.string.isRequired,
-  uncheckedText: PropTypes.string.isRequired,
   checked: PropTypes.bool,
   disabled: PropTypes.bool
 }
