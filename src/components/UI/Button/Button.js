@@ -42,7 +42,7 @@ export const Button = forwardRef(
         disabled={disabled || loading}
         {...rest}
       >
-        {loading && <Spinner />}
+        {loading && <Spinner size='sm' align='inline' className='mr-3' />}
         {label}
       </button>
     )

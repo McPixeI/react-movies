@@ -1,5 +1,3 @@
-import Button from './components/UI/Button'
-import { TextInput } from './components/UI/Forms/TextInput/TextInput'
 import Toggle from './components/UI/Forms/Toggle'
 import { useDarkMode } from './utils/hooks/use-dark-mode'
 

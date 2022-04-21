@@ -65,7 +65,7 @@ export const TextInput = ({
 TextInput.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['text', 'password', 'email', 'search']), // For now only this types are OK
-  placeholder: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
   value: PropTypes.string,
   disabled: PropTypes.bool,
