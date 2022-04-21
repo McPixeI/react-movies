@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import { usePrefersDarkMode } from './use-prefers-dark-mode'
-import { useSafeLocalStorage } from './useSafeLocalStorage'
+import { useLocalStorageState } from './use-local-storage-state'
 
 export function useDarkMode () {
   const prefersDarkMode = usePrefersDarkMode()
-  const [isEnabled, setIsEnabled] = useSafeLocalStorage('dark-mode', undefined)
+  // initial state as true for dark mode default, we can set to undefined to light default
+  const [isEnabled, setIsEnabled] = useLocalStorageState('dark-mode', true)
 
   const enabled = isEnabled === undefined ? prefersDarkMode : isEnabled
 
