@@ -9,20 +9,6 @@ export default {
 
 const Template = args => <TextInput {...args} />
 
-/*
-  name,
-  type = 'text',
-  placeholder,
-  size = 'md',
-  label,
-  value = '',
-  disabled = false,
-  error = '',
-  required = false,
-  className,
-  onChange,
-*/
-
 export const Large = Template.bind({})
 Large.args = {
   size: 'lg',
@@ -44,6 +30,14 @@ Small.args = {
 export const WithoutLabel = Template.bind({})
 WithoutLabel.args = {
   size: 'sm'
+}
+
+export const PasswordType = Template.bind({})
+PasswordType.args = {
+  size: 'md',
+  type: 'password',
+  value: '1234',
+  label: 'Password'
 }
 
 export const Error = Template.bind({})
