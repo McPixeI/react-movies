@@ -8,21 +8,12 @@ export default {
   component: Button,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' }
+    // backgroundColor: { control: 'color' }
   }
 }
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = args => <Button {...args} />
-
-/*
-children,
-variant = 'primary',
-size = 'md',
-type = 'button',
-disabled,
-loading = false,
-*/
 
 export const Primary = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
@@ -53,4 +44,18 @@ export const Small = Template.bind({})
 Small.args = {
   size: 'sm',
   label: 'Button'
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  size: 'md',
+  label: 'Button',
+  disabled: true
+}
+
+export const Loading = Template.bind({})
+Loading.args = {
+  size: 'md',
+  label: 'Button',
+  loading: true
 }

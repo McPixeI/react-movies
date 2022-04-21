@@ -51,7 +51,7 @@ export const Button = forwardRef(
 
 Button.propTypes = {
   label: PropTypes.string.isRequired,
-  variant: PropTypes.string.isRequired,
+  variant: PropTypes.oneOf(['primary', 'secondary']),
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
   type: PropTypes.oneOf(['submit', 'button']),
   disabled: PropTypes.bool,
