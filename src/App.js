@@ -1,3 +1,4 @@
+import { Card, CardHeading, CardBody } from './components/UI/Card'
 import Toggle from './components/UI/Forms/Toggle'
 import { useDarkMode } from './utils/hooks/use-dark-mode'
 
@@ -18,6 +19,9 @@ function App () {
   return (
     <>
       <ThemeToggle />
+      <Card>
+        <CardHeading></CardHeading>
+      </Card>
     </>
   )
 }

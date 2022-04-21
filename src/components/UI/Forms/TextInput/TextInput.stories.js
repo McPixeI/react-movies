@@ -3,7 +3,7 @@ import React from 'react'
 import { TextInput } from './TextInput'
 
 export default {
-  title: 'Components/Forms/TextInput',
+  title: 'Components/UI/Forms/TextInput',
   component: TextInput
 }
 
