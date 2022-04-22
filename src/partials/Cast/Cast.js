@@ -39,12 +39,13 @@ export const Cast = ({ mediaType, mediaId }) => {
 
   return (
     <section className='container mx-auto py-4 my-4'>
-      <h2 className='text-xl mb-4'>Cast</h2>
+      <h2 className='text-2xl mb-4'>Cast</h2>
       <Carousel
         responsive={castCarouselConfig}
         infinite={false}
         autoPlay={false}
         shouldResetAutoplay={false}
+        itemClass='p-1'
       >
         {data.cast.map(person => {
           return (

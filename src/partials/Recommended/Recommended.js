@@ -1,4 +1,4 @@
-import { Card, CardBody, CardHeading } from '../../components/UI/Card'
+import { Card, CardHeading } from '../../components/UI/Card'
 import Spinner from '../../components/UI/Spinner'
 import STATUSES from '../../utils/constants/statuses'
 import Carousel from 'react-multi-carousel'
@@ -38,12 +38,13 @@ export const Recommended = ({ mediaType, mediaId }) => {
 
   return (
     <section className='container mx-auto py-4 my-4'>
-      <h2 className='text-xl mb-4'>Recommended</h2>
+      <h2 className='text-2xl mb-4'>Recommended</h2>
       <Carousel
         responsive={relatedCarouselConfig}
         infinite={false}
         autoPlay={false}
         shouldResetAutoplay={false}
+        itemClass='p-1'
       >
         {data.results.map(media => {
           return (

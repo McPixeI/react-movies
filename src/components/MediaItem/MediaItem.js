@@ -5,7 +5,14 @@ import Badge from '../UI/Badge'
 import { Link } from 'react-router-dom'
 
 export const MediaItem = movie => {
-  const { title, name, media_type: type, id, poster_path: posterPath, vote_average: rating } = movie
+  const {
+    title, name,
+    media_type: type,
+    id,
+    poster_path:
+    posterPath,
+    vote_average: rating
+  } = movie
 
   const movieName = title || name || '-'
 
