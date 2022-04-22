@@ -10,7 +10,7 @@ const getTrendingMedia = async page => {
 }
 
 export const useTrendingMedia = page => {
-  return useQuery(['medias', { page }], () => getTrendingMedia(page), {
+  return useQuery(['trending-media', { page }], () => getTrendingMedia(page), {
     keepPreviousData: true,
     staleTime: 5000
   })

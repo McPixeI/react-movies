@@ -25,10 +25,10 @@ export const Spinner = ({
   )
 
   return (
-    <div class={alignClass}>
+    <div className={alignClass}>
       <svg
         role='status'
-        class={classes}
+        className={classes}
         viewBox='0 0 100 101'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
