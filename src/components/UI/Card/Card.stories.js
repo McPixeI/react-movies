@@ -10,10 +10,10 @@ export default {
 const BasicTemplate = args => (
   <Card {...args}>
     <CardBody>
-      <h5 class='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
+      <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
         Heading text
       </h5>
-      <p class='mb-3 font-normal text-gray-700 dark:text-gray-400'>
+      <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
         We can put whatever we want inside every Card child, for example, a
         button:
       </p>
@@ -26,16 +26,15 @@ const WithHeadingTemplate = args => (
   <Card {...args}>
     <CardHeading>
       <img
-        class='rounded-t-lg'
         src='https://via.placeholder.com/400'
-        alt='Example image'
+        alt='Example'
       />
     </CardHeading>
     <CardBody>
-      <h5 class='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
+      <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
         Heading text
       </h5>
-      <p class='mb-3 font-normal text-gray-700 dark:text-gray-400'>
+      <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
         Lorem ipsum dolor sit amet
       </p>
     </CardBody>
