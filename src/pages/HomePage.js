@@ -16,7 +16,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <div className='max-w-2xl mx-auto py-8 lg:max-w-7xl'>
+      <div className='container max-w-2xl mx-auto py-8 px-4 lg:max-w-7xl'>
         <div className='mt-6 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 lg:grid-cols-4 xl:gap-x-8'>
           {data.results.length
             ? data.results.map(media => <MediaItem key={media.id} {...media} />)
