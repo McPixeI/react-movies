@@ -6,24 +6,7 @@ import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { API_IMG_BASE_PATH } from '../../utils/constants/api'
 import { PROFILE_SIZE } from '../../utils/constants/media'
-
-const castCarouselConfig = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 8,
-    slidesToSlide: 3 // optional, default to 1.
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 6,
-    slidesToSlide: 2 // optional, default to 1.
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 2,
-    slidesToSlide: 1 // optional, default to 1.
-  }
-}
+import { castCarouselConfig } from '../../utils/config/carousel-config'
 
 export const Cast = ({ mediaType, mediaId }) => {
   const { data, status } = useCast(mediaType, mediaId)

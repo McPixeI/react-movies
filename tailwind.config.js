@@ -6,6 +6,8 @@ module.exports = {
   theme: {
     colors: {
       primary: '#6366F1',
+      bgdark: '#111827',
+      bglight: '#fffff',
       transparent: 'transparent',
       current: 'currentColor',
       black: colors.black,
