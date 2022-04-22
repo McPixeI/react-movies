@@ -10,6 +10,7 @@
     "clsx": "^1.1.1",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-multi-carousel": "^2.8.0",
     "react-query": "3.35.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
@@ -24,10 +25,15 @@
     "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
-    "extends": ["react-app", "react-app/jest"],
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
     "overrides": [
       {
-        "files": ["**/*.stories.*"],
+        "files": [
+          "**/*.stories.*"
+        ],
         "rules": {
           "import/no-anonymous-default-export": "off"
         }
@@ -35,7 +41,11 @@
     ]
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

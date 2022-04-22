@@ -1,10 +1,10 @@
 import { Card, CardBody, CardHeading } from '../UI/Card'
-import { IMG_CARD_SIZE } from '../../utils/constants/media'
+import { BACKDROP_SIZE } from '../../utils/constants/media'
 import { API_IMG_BASE_PATH } from '../../utils/constants/api'
 import Badge from '../UI/Badge'
 import { Link } from 'react-router-dom'
 
-export const MovieItem = movie => {
+export const MediaItem = movie => {
   const { title, name, media_type: type, id, poster_path: posterPath, vote_average: rating } = movie
 
   const movieName = title || name || '-'
@@ -15,7 +15,7 @@ export const MovieItem = movie => {
         <CardHeading className='overflow-hidden'>
           <img
             className='hover:scale-105 transition-transform duration-300'
-            src={`${API_IMG_BASE_PATH}/${IMG_CARD_SIZE}/${posterPath}`}
+            src={`${API_IMG_BASE_PATH}/${BACKDROP_SIZE.SMALL}/${posterPath}`}
             alt={`${movieName} poster`}
           />
         </CardHeading>
