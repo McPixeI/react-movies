@@ -1,45 +1,38 @@
-import { Card, CardHeading } from '../../components/UI/Card'
-import Spinner from '../../components/UI/Spinner'
-import { API_IMG_BASE_PATH } from '../../utils/constants/api'
-import { POSTER_SIZE } from '../../utils/constants/media'
 import { useRecommendations } from '../../queries/use-recommendations'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
-import { recommendedCarouselConfig } from '../../utils/config/carousel-config'
+import { defaultCarouselConfig } from '../../utils/config/carousel-config'
+import { MediaItemSkeleton } from '../../components/MediaItem/MediaItemSkeleton'
+import { MediaItem } from '../../components/MediaItem/MediaItem'
 
 export const Recommended = ({ mediaType, mediaId }) => {
-  const { data, isLoading, isError, error, isSuccess } = useRecommendations(mediaType, mediaId)
+  const { medias, isError, error, isLoading } = useRecommendations(mediaType, mediaId)
 
   if (isError) {
     throw new Error(`An error ocurred rendering Cast: ${error}`)
   }
 
+  const skeletons = Array.from({ length: 8 }, (v, index) => ({
+    id: `loading-media-${index}`
+  }))
+
+  const mediaItems = isLoading
+    ? skeletons.map(skeleton => <MediaItemSkeleton key={skeleton.id} />)
+    : medias.map(media => <MediaItem key={media.id} {...media} />)
+
   return (
     <section className='container mx-auto py-4 my-4'>
       <h2 className='text-2xl mb-4'>Recommended</h2>
-      {isLoading && <Spinner />}
-      {isSuccess &&
-        <Carousel
-          responsive={recommendedCarouselConfig}
-          infinite={false}
-          autoPlay={false}
-          shouldResetAutoplay={false}
-          removeArrowOnDeviceType={['tablet', 'mobile']}
-          itemClass='p-1'
-        >
-          {data.results.map(media => {
-            return (
-              <Card key={media.id} className='h-full'>
-                <CardHeading>
-                  <img
-                    src={`${API_IMG_BASE_PATH}/${POSTER_SIZE.MEDIUM}/${media.poster_path}`}
-                    alt={media.name}
-                  />
-                </CardHeading>
-              </Card>
-            )
-          })}
-        </Carousel>}
+      <Carousel
+        responsive={defaultCarouselConfig}
+        infinite={false}
+        autoPlay={false}
+        shouldResetAutoplay={false}
+        removeArrowOnDeviceType={['tablet', 'mobile']}
+        itemClass='p-1'
+      >
+        {mediaItems}
+      </Carousel>
     </section>
 
   )

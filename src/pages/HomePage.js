@@ -1,27 +1,38 @@
 import { MediaItem } from '../components/MediaItem/MediaItem'
 import { useTrendingMedia } from '../queries/use-trending-media'
-import { Spinner } from '../components/UI/Spinner/Spinner'
-import STATUSES from '../utils/constants/statuses'
+import Carousel from 'react-multi-carousel'
+import { defaultCarouselConfig } from '../utils/config/carousel-config'
+import { MediaItemSkeleton } from '../components/MediaItem/MediaItemSkeleton'
 
 export const HomePage = () => {
-  const { data, status } = useTrendingMedia(1)
+  const { medias, isError, error, isLoading } = useTrendingMedia()
 
-  if (status === STATUSES.LOADING) {
-    return <Spinner />
-  }
-
-  if (status === STATUSES.ERROR) {
+  if (isError) {
+    console.log(`Error loading home page: ${error}`)
     return 'Error'
   }
 
+  const skeletons = Array.from({ length: 8 }, (v, index) => ({
+    id: `loading-media-${index}`
+  }))
+
+  const mediaItems = isLoading
+    ? skeletons.map(skeleton => <MediaItemSkeleton key={skeleton.id} />)
+    : medias.map(media => <MediaItem key={media.id} {...media} />)
+
   return (
     <>
-      <div className='container max-w-2xl mx-auto py-8 px-4 lg:max-w-7xl'>
-        <div className='mt-6 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 lg:grid-cols-4 xl:gap-x-8'>
-          {data.results.length
-            ? data.results.map(media => <MediaItem key={media.id} {...media} />)
-            : <p>No se han encontrado resultados</p>}
-        </div>
+      <div className='mx-auto py-8 px-4 lg:max-w-7xl'>
+        <h2 className='text-2xl mb-4'>Trending now</h2>
+        <Carousel
+          responsive={defaultCarouselConfig}
+          infinite={false}
+          autoPlay={false}
+          shouldResetAutoplay={false}
+          itemClass='p-1'
+        >
+          {mediaItems}
+        </Carousel>
       </div>
     </>
   )
