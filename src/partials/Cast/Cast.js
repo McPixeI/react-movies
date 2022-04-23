@@ -7,6 +7,7 @@ import { PROFILE_SIZE } from '../../utils/constants/media'
 import { defaultCarouselConfig } from '../../utils/config/carousel-config'
 import { MediaItemSkeleton } from '../../components/MediaItem/MediaItemSkeleton'
 import { Image } from '../../components/Image/Image'
+import fallbackImage from '../../images/cast-fallback.png'
 
 export const Cast = ({ mediaType, mediaId }) => {
   const { cast, isError, error, isLoading } = useCast(mediaType, mediaId)
@@ -23,11 +24,12 @@ export const Cast = ({ mediaType, mediaId }) => {
     ? skeletons.map(skeleton => <MediaItemSkeleton key={skeleton.id} />)
     : cast.map(person => (
       <Card key={person.id} className='h-full'>
-        <CardHeading className='aspect-[2/3] overflow-hidden bg-gradient-to-b from-gray-600 to-gray-800 '>
+        <CardHeading className='relative aspect-[2/3] overflow-hidden'>
           <Image
             className='w-full'
             src={`${API_IMG_BASE_PATH}/${PROFILE_SIZE.MEDIUM}/${person.profile_path}`}
-            alt=''
+            fallback={fallbackImage}
+            alt={person.name}
             loading='lazy'
           />
         </CardHeading>

@@ -27,7 +27,7 @@ export const MediaItem = media => {
           {rating > 0 && <Badge className='absolute top-3 right-1 opacity-80'>{rating}</Badge>}
         </CardHeading>
         <CardBody>
-          <h3 className='text-xl mr-3 font-bold tracking-tight text-gray-900 dark:text-white'>
+          <h3 className='text-xl font-bold text-gray-900 dark:text-white'>
             {mediaName}
           </h3>
         </CardBody>

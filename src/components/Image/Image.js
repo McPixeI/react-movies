@@ -1,19 +1,21 @@
+
 export const Image = ({
   src,
   alt,
+  fallback,
   lazy = true,
   className
 }) => {
   const handleError = (evt) => {
-    console.log('event image error: ' + evt.target.src)
-    // evt.currentTarget.src = fallback
+    const target = evt.currentTarget
+    target.src = fallback
+    target.className = 'absolute left-0 top-1/3'
   }
 
   return (
     <img
       src={src}
       alt={alt}
-      // fallback={fallback}
       onError={handleError}
       loading={lazy ? 'lazy' : 'eager'}
       className={className}
