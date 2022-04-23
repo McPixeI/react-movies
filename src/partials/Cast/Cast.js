@@ -6,6 +6,7 @@ import { API_IMG_BASE_PATH } from '../../utils/constants/api'
 import { PROFILE_SIZE } from '../../utils/constants/media'
 import { defaultCarouselConfig } from '../../utils/config/carousel-config'
 import { MediaItemSkeleton } from '../../components/MediaItem/MediaItemSkeleton'
+import { Image } from '../../components/Image/Image'
 
 export const Cast = ({ mediaType, mediaId }) => {
   const { cast, isError, error, isLoading } = useCast(mediaType, mediaId)
@@ -22,11 +23,11 @@ export const Cast = ({ mediaType, mediaId }) => {
     ? skeletons.map(skeleton => <MediaItemSkeleton key={skeleton.id} />)
     : cast.map(person => (
       <Card key={person.id} className='h-full'>
-        <CardHeading className='aspect-[2/3] overflow-hidden'>
-          <img
+        <CardHeading className='aspect-[2/3] overflow-hidden bg-gradient-to-b from-gray-600 to-gray-800 '>
+          <Image
             className='w-full'
             src={`${API_IMG_BASE_PATH}/${PROFILE_SIZE.MEDIUM}/${person.profile_path}`}
-            alt={person.name}
+            alt=''
             loading='lazy'
           />
         </CardHeading>
