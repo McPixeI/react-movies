@@ -7,6 +7,7 @@ export const Toggle = ({
   text = 'Toggle',
   checked = false,
   disabled = false,
+  onClick = () => {},
   className,
   ...rest
 }) => {
@@ -26,7 +27,10 @@ export const Toggle = ({
       <label
         htmlFor={name}
         className='flex relative items-center mb-4 cursor-pointer'
-        onClick={() => toggle()}
+        onClick={() => {
+          toggle()
+          onClick()
+        }}
       >
         <input
           type='checkbox'
@@ -47,5 +51,6 @@ export const Toggle = ({
 Toggle.propTypes = {
   name: PropTypes.string.isRequired,
   checked: PropTypes.bool,
+  onClick: PropTypes.func,
   disabled: PropTypes.bool
 }
