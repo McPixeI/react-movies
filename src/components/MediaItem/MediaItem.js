@@ -24,7 +24,7 @@ export const MediaItem = media => {
             src={`${API_IMG_BASE_PATH}/${BACKDROP_SIZE.SMALL}/${posterPath}`}
             alt={`${mediaName} poster`}
           />
-          {rating > 0 && <Badge className='absolute top-3 right-1 opacity-80'>{rating}</Badge>}
+          {rating > 0 && <Badge className='absolute top-3 right-1 opacity-80'>{rating.toFixed(1)}</Badge>}
         </CardHeading>
         <CardBody>
           <h3 className='text-xl font-bold text-gray-900 dark:text-white'>

@@ -23,7 +23,7 @@ export const Toggle = ({
     setState(!state)
   }
   return (
-    <>
+    <div className='inline-block'>
       <label
         htmlFor={name}
         className='flex relative items-center mb-4 cursor-pointer'
@@ -44,7 +44,7 @@ export const Toggle = ({
           {text}
         </span>
       </label>
-    </>
+    </div>
   )
 }
 
