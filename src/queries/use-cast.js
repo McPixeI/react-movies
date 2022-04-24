@@ -4,8 +4,7 @@ import { API_KEY, API_BASE_PATH } from '../utils/constants/api'
 
 const placeolderData = Array.from({ length: 8 }, (v, index) => ({
   id: `loading-cast-${index}`,
-  name: 'Loading...',
-  character: ''
+  name: 'Loading...'
 }))
 
 const getCast = async (mediaType, mediaId) => {
@@ -17,7 +16,7 @@ const getCast = async (mediaType, mediaId) => {
 }
 
 export const useCast = (mediaType, mediaId) => {
-  const result = useQuery(['cast', { mediaId }], () => getCast(mediaType, mediaId), {
+  const result = useQuery(['cast', { mediaType, mediaId }], () => getCast(mediaType, mediaId), {
     placeholderData: placeolderData,
     staleTime: 5000
   })

@@ -20,31 +20,34 @@ export const Cast = ({ mediaType, mediaId }) => {
       <h2 className='text-3xl font-semibold mb-4'>Cast</h2>
 
       <Swiper
+        key={cast.length} // Key for rerendering swiper when cast array changes
         navigation
         modules={[Navigation]}
         breakpoints={defaultSwiperConfig}
         grabCursor
+        onSwiper={(swiper) => console.log(swiper)}
       >
-        {cast?.map(person =>
-          <SwiperSlide key={person.id}>
-            <Card key={person.id} className='h-full'>
-              <CardHeading className='relative aspect-[2/3] overflow-hidden'>
-                <Image
-                  className='w-full'
-                  src={`${API_IMG_BASE_PATH}/${PROFILE_SIZE.MEDIUM}/${person.profile_path}`}
-                  fallback={fallbackImage}
-                  alt={person.name}
-                  loading='lazy'
-                />
-              </CardHeading>
-              <CardBody>
-                <p className='font-medium text-lg mb-1'>{person.name}</p>
-                <p className='font-normal text-md'>{`"${person.character}"`}</p>
-              </CardBody>
-            </Card>
-          </SwiperSlide>
-
-        )}
+        {cast.map(person => {
+          return (
+            <SwiperSlide key={person.id}>
+              <Card key={person.id} className='h-full'>
+                <CardHeading className='relative aspect-[2/3] overflow-hidden'>
+                  <Image
+                    className='w-full'
+                    src={`${API_IMG_BASE_PATH}/${PROFILE_SIZE.MEDIUM}/${person.profile_path}`}
+                    fallback={fallbackImage}
+                    alt={person.name}
+                    loading='lazy'
+                  />
+                </CardHeading>
+                <CardBody>
+                  <p className='font-medium text-lg mb-1'>{person.name}</p>
+                  <p className='font-normal text-md'>{person.character && `"${person.character}"`}</p>
+                </CardBody>
+              </Card>
+            </SwiperSlide>
+          )
+        })}
       </Swiper>
     </section>
 

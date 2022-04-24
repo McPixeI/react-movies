@@ -19,8 +19,8 @@ export const HomePage = () => {
     <>
       <div className='mx-auto py-8 px-4 lg:max-w-7xl'>
         <h2 className='text-2xl mb-4'>Trending now</h2>
-
         <Swiper
+          key={medias.length} // Key for rerendering swiper when cast array changes
           navigation
           modules={[Navigation]}
           breakpoints={defaultSwiperConfig}

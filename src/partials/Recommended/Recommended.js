@@ -15,6 +15,7 @@ export const Recommended = ({ mediaType, mediaId }) => {
     <section className='container mx-auto py-4 my-4'>
       <h2 className='text-3xl font-semibold mb-4'>Recommended</h2>
       <Swiper
+        key={medias.length} // Key for rerendering swiper when cast array changes
         navigation
         modules={[Navigation]}
         breakpoints={defaultSwiperConfig}
