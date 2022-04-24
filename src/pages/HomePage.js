@@ -8,6 +8,7 @@ import { defaultSwiperConfig } from '../utils/config/carousel-config'
 import { Hero } from '../components/Hero/Hero'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { Section } from '../containers/Section/Section'
 
 export const HomePage = () => {
   const { medias, isError, error, isLoading } = useTrendingMedia()
@@ -31,8 +32,7 @@ export const HomePage = () => {
           <Button>Ver más</Button>
         </Link>
       </Hero>
-      <div className='mx-auto py-8 px-4 lg:max-w-7xl'>
-        <h2 className='text-2xl mb-4'>Trending now</h2>
+      <Section title='Trending now'>
         <Swiper
           key={medias.length} // Key for rerendering swiper when cast array changes
           navigation
@@ -47,7 +47,8 @@ export const HomePage = () => {
               <MediaItem {...media} />
             </SwiperSlide>)}
         </Swiper>
-      </div>
+      </Section>
+
     </>
   )
 }

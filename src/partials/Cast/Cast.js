@@ -7,6 +7,7 @@ import { Image } from '../../components/Image/Image'
 import fallbackImage from '../../images/cast-fallback.png'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
+import { Section } from '../../containers/Section/Section'
 
 export const Cast = ({ mediaType, mediaId }) => {
   const { cast, isError, error } = useCast(mediaType, mediaId)
@@ -16,9 +17,7 @@ export const Cast = ({ mediaType, mediaId }) => {
   }
 
   return (
-    <section className='container mx-auto py-4 my-4'>
-      <h2 className='text-3xl font-semibold mb-4'>Cast</h2>
-
+    <Section title='Cast'>
       <Swiper
         key={cast.length} // Key for rerendering swiper when cast array changes
         navigation
@@ -50,7 +49,7 @@ export const Cast = ({ mediaType, mediaId }) => {
           )
         })}
       </Swiper>
-    </section>
+    </Section>
 
   )
 }

@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
 import { defaultSwiperConfig } from '../../utils/config/carousel-config'
 import { MediaItem } from '../../components/MediaItem/MediaItem'
+import { Section } from '../../containers/Section/Section'
 
 export const Recommended = ({ mediaType, mediaId }) => {
   const { medias, isError, error } = useRecommendations(mediaType, mediaId)
@@ -12,8 +13,7 @@ export const Recommended = ({ mediaType, mediaId }) => {
   }
 
   return (
-    <section className='container mx-auto py-4 my-4'>
-      <h2 className='text-3xl font-semibold mb-4'>Recommended</h2>
+    <Section title='Recommended'>
       <Swiper
         key={medias.length} // Key for rerendering swiper when cast array changes
         navigation
@@ -28,7 +28,7 @@ export const Recommended = ({ mediaType, mediaId }) => {
             <MediaItem {...media} />
           </SwiperSlide>)}
       </Swiper>
-    </section>
+    </Section>
 
   )
 }
