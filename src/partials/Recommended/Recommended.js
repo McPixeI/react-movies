@@ -2,36 +2,27 @@ import { useRecommendations } from '../../queries/use-recommendations'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { defaultCarouselConfig } from '../../utils/config/carousel-config'
-import { MediaItemSkeleton } from '../../components/MediaItem/MediaItemSkeleton'
 import { MediaItem } from '../../components/MediaItem/MediaItem'
 
 export const Recommended = ({ mediaType, mediaId }) => {
-  const { medias, isError, error, isLoading } = useRecommendations(mediaType, mediaId)
+  const { medias, isError, error } = useRecommendations(mediaType, mediaId)
 
   if (isError) {
     throw new Error(`An error ocurred rendering Cast: ${error}`)
   }
 
-  const skeletons = Array.from({ length: 8 }, (v, index) => ({
-    id: `loading-media-${index}`
-  }))
-
-  const mediaItems = isLoading
-    ? skeletons.map(skeleton => <MediaItemSkeleton key={skeleton.id} />)
-    : medias.map(media => <MediaItem key={media.id} {...media} />)
-
   return (
     <section className='container mx-auto py-4 my-4'>
-      <h2 className='text-2xl mb-4'>Recommended</h2>
+      <h2 className='text-3xl font-semibold mb-4'>Recommended</h2>
       <Carousel
         responsive={defaultCarouselConfig}
-        infinite={false}
+        infinite
         autoPlay={false}
         shouldResetAutoplay={false}
         removeArrowOnDeviceType={['tablet', 'mobile']}
         itemClass='p-1'
       >
-        {mediaItems}
+        {medias?.map(media => <MediaItem key={media.id} {...media} />)}
       </Carousel>
     </section>
 

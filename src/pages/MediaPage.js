@@ -8,7 +8,7 @@ import { API_IMG_BASE_PATH } from '../utils/constants/api'
 import { Cast } from '../partials/Cast/Cast'
 import { Recommended } from '../partials/Recommended/Recommended'
 
-export const MediaPage = ({ children }) => {
+export const MediaPage = () => {
   const { mediaType, mediaId } = useParams()
 
   const { data, status } = useMedia(mediaType, mediaId)
@@ -24,7 +24,7 @@ export const MediaPage = ({ children }) => {
   return (
     <>
       <Hero style={{ backgroundImage: `url(${API_IMG_BASE_PATH}/w1280/${data.backdrop_path})`, backgroundSize: 'cover' }}>
-        <h1 className='font-bold text-white text-3xl my-4'>{data.title || data.name}</h1>
+        <h1 className='font-bold text-white text-4xl my-4'>{data.title || data.name}</h1>
         <p className='leading-normal mb-4 text-white'>{data.overview}</p>
         <Button>Trailer</Button>
       </Hero>
