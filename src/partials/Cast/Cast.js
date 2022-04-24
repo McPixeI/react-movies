@@ -2,7 +2,7 @@ import { Card, CardBody, CardHeading } from '../../components/UI/Card'
 import { useCast } from '../../queries/use-cast'
 import { API_IMG_BASE_PATH } from '../../utils/constants/api'
 import { PROFILE_SIZE } from '../../utils/constants/media'
-import { defaultSwiperConfig } from '../../utils/config/carousel-config'
+import { castSwiperConfig } from '../../utils/config/carousel-config'
 import { Image } from '../../components/Image/Image'
 import fallbackImage from '../../images/cast-fallback.png'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -16,6 +16,8 @@ export const Cast = ({ mediaType, mediaId }) => {
     throw new Error(`An error ocurred rendering Cast: ${error}`)
   }
 
+  if (!cast.length) return null
+
   return (
     <Section title='Cast'>
       <Swiper
@@ -24,7 +26,7 @@ export const Cast = ({ mediaType, mediaId }) => {
         modules={[Navigation]}
         slidesPerView={3}
         spaceBetween={8}
-        breakpoints={defaultSwiperConfig}
+        breakpoints={castSwiperConfig}
         grabCursor
       >
         {cast.map(person => {
@@ -33,16 +35,16 @@ export const Cast = ({ mediaType, mediaId }) => {
               <Card key={person.id} className='h-full'>
                 <CardHeading className='relative aspect-[2/3] overflow-hidden'>
                   <Image
-                    className='w-full'
-                    src={`${API_IMG_BASE_PATH}/${PROFILE_SIZE.MEDIUM}/${person.profile_path}`}
+                    className='w-full object-cover aspect-[2/3]'
+                    src={`${API_IMG_BASE_PATH}/${PROFILE_SIZE.MEDIUM}${person.profile_path}`}
                     fallback={fallbackImage}
                     alt={person.name}
                     loading='lazy'
                   />
                 </CardHeading>
                 <CardBody>
-                  <p className='font-medium text-lg mb-1'>{person.name}</p>
-                  <p className='font-normal text-md'>{person.character && `"${person.character}"`}</p>
+                  <p className='font-medium text-md mb-1'>{person.name}</p>
+                  <p className='font-normal text-sm'>{person.character && `"${person.character}"`}</p>
                 </CardBody>
               </Card>
             </SwiperSlide>

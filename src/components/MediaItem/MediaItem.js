@@ -3,6 +3,8 @@ import { BACKDROP_SIZE } from '../../utils/constants/media'
 import { API_IMG_BASE_PATH } from '../../utils/constants/api'
 import Badge from '../UI/Badge'
 import { Link } from 'react-router-dom'
+import { Image } from '../Image/Image'
+import fallbackImage from '../../images/media-fallback.png'
 
 export const MediaItem = media => {
   const {
@@ -19,8 +21,9 @@ export const MediaItem = media => {
     <Card className='h-full'>
       <Link to={`/${type}/${id}`}>
         <CardHeading className='aspect-[2/3] overflow-hidden'>
-          <img
+          <Image
             className='w-full block hover:scale-105 transition-transform duration-300 object-cover'
+            fallback={fallbackImage}
             src={`${API_IMG_BASE_PATH}/${BACKDROP_SIZE.SMALL}/${posterPath}`}
             alt={`${mediaName} poster`}
           />

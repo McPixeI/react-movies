@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 
 export const Image = ({
   src,
@@ -9,6 +10,7 @@ export const Image = ({
   const handleError = (evt) => {
     const target = evt.currentTarget
     target.src = fallback
+    target.alt = ''
     target.className = 'absolute left-0 top-1/3'
   }
 
@@ -21,4 +23,12 @@ export const Image = ({
       className={className}
     />
   )
+}
+
+Image.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string,
+  fallback: PropTypes.string.isRequired,
+  lazy: PropTypes.bool,
+  className: PropTypes.string
 }

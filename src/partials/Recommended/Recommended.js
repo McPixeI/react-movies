@@ -12,6 +12,8 @@ export const Recommended = ({ mediaType, mediaId }) => {
     throw new Error(`An error ocurred rendering Cast: ${error}`)
   }
 
+  if (!medias.length) return null
+
   return (
     <Section title='Recommended'>
       <Swiper
