@@ -1,12 +1,21 @@
 import { MediaItem } from '../components/MediaItem/MediaItem'
 import { useTrendingMedia } from '../queries/use-trending-media'
 import { Spinner } from '../components/UI/Spinner/Spinner'
+import { Button } from '../components/UI/Button/Button'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
 import { defaultSwiperConfig } from '../utils/config/carousel-config'
+import { Hero } from '../components/Hero/Hero'
+import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 export const HomePage = () => {
   const { medias, isError, error, isLoading } = useTrendingMedia()
+  const [cover, setCover] = useState({})
+
+  useEffect(() => {
+    setCover(medias[0])
+  }, [medias])
 
   if (isLoading) return <Spinner />
 
@@ -17,6 +26,11 @@ export const HomePage = () => {
 
   return (
     <>
+      <Hero media={cover}>
+        <Link to={`/${cover.media_type}/${cover.id}`}>
+          <Button>Ver más</Button>
+        </Link>
+      </Hero>
       <div className='mx-auto py-8 px-4 lg:max-w-7xl'>
         <h2 className='text-2xl mb-4'>Trending now</h2>
         <Swiper
