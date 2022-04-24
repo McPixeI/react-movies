@@ -20,7 +20,7 @@ export const MediaItem = media => {
       <Link to={`/${type}/${id}`}>
         <CardHeading className='aspect-[2/3] overflow-hidden'>
           <img
-            className='hover:scale-105 transition-transform duration-300 object-cover'
+            className='w-full block hover:scale-105 transition-transform duration-300 object-cover'
             src={`${API_IMG_BASE_PATH}/${BACKDROP_SIZE.SMALL}/${posterPath}`}
             alt={`${mediaName} poster`}
           />

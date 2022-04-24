@@ -2,11 +2,11 @@ import { useQuery } from 'react-query'
 import axios from 'axios'
 import { API_KEY, API_BASE_PATH } from '../utils/constants/api'
 
-const placeholderData = Array.from({ length: 8 }, (v, index) => ({
-  id: `loading-media-${index}`,
+const placeholderData = {
   title: 'Loading...',
-  name: 'Loading...'
-}))
+  name: 'Loading...',
+  overview: 'We are loading the information, please wait a second...'
+}
 
 const getMedia = async (mediaType, mediaId) => {
   const { data } = await axios.get(

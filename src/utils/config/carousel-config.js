@@ -1,11 +1,11 @@
 export const defaultSwiperConfig = {
   640: {
     slidesPerView: 2,
-    spaceBetween: 20
+    spaceBetween: 16
   },
   768: {
     slidesPerView: 4,
-    spaceBetween: 40
+    spaceBetween: 16
   },
   1024: {
     slidesPerView: 6,

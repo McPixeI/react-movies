@@ -23,9 +23,10 @@ export const Cast = ({ mediaType, mediaId }) => {
         key={cast.length} // Key for rerendering swiper when cast array changes
         navigation
         modules={[Navigation]}
+        slidesPerView={3}
+        spaceBetween={8}
         breakpoints={defaultSwiperConfig}
         grabCursor
-        onSwiper={(swiper) => console.log(swiper)}
       >
         {cast.map(person => {
           return (

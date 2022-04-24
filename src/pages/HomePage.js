@@ -23,6 +23,8 @@ export const HomePage = () => {
           key={medias.length} // Key for rerendering swiper when cast array changes
           navigation
           modules={[Navigation]}
+          slidesPerView={2}
+          spaceBetween={8}
           breakpoints={defaultSwiperConfig}
           grabCursor
         >
