@@ -1,17 +1,14 @@
-export const defaultCarouselConfig = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 6,
-    slidesToSlide: 3 // optional, default to 1.
+export const defaultSwiperConfig = {
+  640: {
+    slidesPerView: 2,
+    spaceBetween: 20
   },
-  tablet: {
-    breakpoint: { max: 1024, min: 640 },
-    items: 4,
-    slidesToSlide: 2 // optional, default to 1.
+  768: {
+    slidesPerView: 4,
+    spaceBetween: 40
   },
-  mobile: {
-    breakpoint: { max: 640, min: 0 },
-    items: 2,
-    slidesToSlide: 1 // optional, default to 1.
+  1024: {
+    slidesPerView: 6,
+    spaceBetween: 16
   }
 }

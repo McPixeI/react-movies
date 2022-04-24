@@ -1,7 +1,7 @@
 import { useRecommendations } from '../../queries/use-recommendations'
-import Carousel from 'react-multi-carousel'
-import 'react-multi-carousel/lib/styles.css'
-import { defaultCarouselConfig } from '../../utils/config/carousel-config'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation } from 'swiper'
+import { defaultSwiperConfig } from '../../utils/config/carousel-config'
 import { MediaItem } from '../../components/MediaItem/MediaItem'
 
 export const Recommended = ({ mediaType, mediaId }) => {
@@ -14,16 +14,17 @@ export const Recommended = ({ mediaType, mediaId }) => {
   return (
     <section className='container mx-auto py-4 my-4'>
       <h2 className='text-3xl font-semibold mb-4'>Recommended</h2>
-      <Carousel
-        responsive={defaultCarouselConfig}
-        infinite
-        autoPlay={false}
-        shouldResetAutoplay={false}
-        removeArrowOnDeviceType={['tablet', 'mobile']}
-        itemClass='p-1'
+      <Swiper
+        navigation
+        modules={[Navigation]}
+        breakpoints={defaultSwiperConfig}
+        grabCursor
       >
-        {medias?.map(media => <MediaItem key={media.id} {...media} />)}
-      </Carousel>
+        {medias?.map(media =>
+          <SwiperSlide key={media.id}>
+            <MediaItem {...media} />
+          </SwiperSlide>)}
+      </Swiper>
     </section>
 
   )

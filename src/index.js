@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import '../src/styles/index.css'
+import '../src/styles/vendors/swiper.css'
 import App from './App'
 import { AppProviders } from './context'
 import { ReactQueryDevtools } from 'react-query/devtools'
