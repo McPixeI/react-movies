@@ -1,11 +1,13 @@
 import AppRoutes from './AppRoutes'
-import { ThemeToggle } from './containers/ThemeToggle/ThemeToggle'
+import { AppFooter } from './containers/AppFooter/AppFooter'
+import { AppNav } from './containers/AppNav/AppNav'
 
 function App () {
   return (
     <>
-      <ThemeToggle />
+      <AppNav />
       <AppRoutes />
+      <AppFooter />
     </>
   )
 }

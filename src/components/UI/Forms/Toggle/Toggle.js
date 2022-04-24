@@ -26,7 +26,7 @@ export const Toggle = ({
     <div className='inline-block'>
       <label
         htmlFor={name}
-        className='flex relative items-center mb-4 cursor-pointer'
+        className='flex relative items-center cursor-pointer'
         onClick={() => {
           toggle()
           onClick()
