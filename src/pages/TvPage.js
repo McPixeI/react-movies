@@ -29,7 +29,7 @@ export const TvPage = () => {
   if (status === 'error') return <span>Error: {error.message}</span>
 
   return (
-    <div className='container mx-auto px-2 my-8'>
+    <div className='container mx-auto px-2 my-8 mt-20'>
       <h1 className='text-3xl font-semibold mb-6'>Popular TV shows</h1>
       <div className='max-w-2xl mx-auto py-4 lg:max-w-7xl'>
         <div className='mt-6 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 lg:grid-cols-4 xl:gap-x-8'>
