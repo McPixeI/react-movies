@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ExtLink } from '../../components/UI/Links/ExtLink/ExtLink'
 import { NAV_ITEMS } from '../../utils/config/nav-items'
+
 export const AppFooter = () => {
   return (
     <footer className='container mx-auto py-4 bg-white md:flex md:items-center md:justify-between md:p-6 dark:bg-bgdark'>
