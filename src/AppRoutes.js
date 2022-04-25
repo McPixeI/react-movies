@@ -9,9 +9,9 @@ export default function AppRoutes () {
   return (
     <Routes>
       <Route path='/' element={<HomePage />} />
-      <Route exact path='/movies' element={<MoviesPage />} />
+      <Route path='/movie' element={<MoviesPage />} />
       <Route exact path='/tv' element={<TvPage />} />
-      <Route exact path='/:mediaType/:mediaId' element={<MediaPage />} />
+      <Route path='/:mediaType/:mediaId' element={<MediaPage />} />
       <Route path='*' element={<NotFoundPage />} />
     </Routes>
   )

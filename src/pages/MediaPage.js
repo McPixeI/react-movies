@@ -9,6 +9,8 @@ import { Recommended } from '../partials/Recommended/Recommended'
 export const MediaPage = () => {
   const { mediaType, mediaId } = useParams()
 
+  console.log(useParams())
+
   const { data, status } = useMedia(mediaType, mediaId)
 
   if (status === STATUSES.LOADING) {

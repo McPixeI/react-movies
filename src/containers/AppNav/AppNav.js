@@ -1,16 +1,18 @@
-import clsx from 'clsx'
-import { Link, useMatch } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { NAV_ITEMS } from '../../utils/config/nav-items'
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle'
 
-const NavLink = ({ props }) => {
-  const match = useMatch(props.to)
-
-  const classes = clsx(
-    'block py-2 pr-4 pl-3 text-gray-700 md:border-0 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:text-white',
-    { 'text-primary dark:text-primary': match }
+const AppNavLink = ({ props }) => {
+  return (
+    <NavLink
+      to={props.to}
+      className={({ isActive }) => {
+        return 'block py-2 pr-4 pl-3 text-gray-700 hover:text-gray-900 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:text-white' +
+        (isActive ? ' text-primary dark:text-primary' : '')
+      }}
+    >{props.label}
+    </NavLink>
   )
-  return <Link to={props.to} className={classes}>{props.label}</Link>
 }
 
 export const AppNav = () => {
@@ -33,7 +35,7 @@ export const AppNav = () => {
             {NAV_ITEMS.map(item => {
               return (
                 <li key={item.id}>
-                  <NavLink props={item} />
+                  <AppNavLink props={item} />
                 </li>
               )
             })}

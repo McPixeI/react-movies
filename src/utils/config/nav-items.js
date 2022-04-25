@@ -6,7 +6,7 @@ export const NAV_ITEMS = [
   },
   {
     id: 'nav-item-2',
-    to: '/movies',
+    to: '/movie',
     label: 'Movies'
   },
   {
