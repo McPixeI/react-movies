@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 export const Toggle = ({
   name,
-  text = 'Toggle',
+  label = 'Toggle',
   checked = false,
   disabled = false,
   onClick = () => {},
@@ -41,7 +41,7 @@ export const Toggle = ({
         />
         <div className={classes} {...rest} />
         <span className='ml-3 text-sm font-medium text-gray-900 dark:text-gray-300'>
-          {text}
+          {label}
         </span>
       </label>
     </div>
@@ -50,6 +50,7 @@ export const Toggle = ({
 
 Toggle.propTypes = {
   name: PropTypes.string.isRequired,
+  label: PropTypes.any,
   checked: PropTypes.bool,
   onClick: PropTypes.func,
   disabled: PropTypes.bool
