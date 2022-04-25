@@ -1,5 +1,5 @@
 import { Card, CardBody, CardHeading } from '../UI/Card'
-import { BACKDROP_SIZE } from '../../utils/constants/media'
+import { POSTER_SIZE } from '../../utils/constants/media'
 import { API_IMG_BASE_PATH } from '../../utils/constants/api'
 import Badge from '../UI/Badge'
 import { Link } from 'react-router-dom'
@@ -23,7 +23,7 @@ export const MediaItem = media => {
           <Image
             className='w-full block hover:scale-105 transition-transform duration-300 object-cover'
             // fallback={fallbackImage}
-            src={`${API_IMG_BASE_PATH}/${BACKDROP_SIZE.SMALL}/${posterPath}`}
+            src={`${API_IMG_BASE_PATH}/${POSTER_SIZE.MEDIUM}/${posterPath}`}
             alt={`${mediaName} poster`}
             loading='lazy'
           />

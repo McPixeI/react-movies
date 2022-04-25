@@ -1,10 +1,11 @@
+import { ExtLink } from '../../components/UI/Links/ExtLink/ExtLink'
+
 export const AppFooter = () => {
   return (
-    <footer className='p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-bgdark'>
-      <span className='text-sm text-gray-500 sm:text-center dark:text-gray-400'>© {new Date().getFullYear()}
-        <a href='/' className='hover:underline'>React Movies author™</a>
-        . All Rights Reserved.
-        <p>Built by BLABLALBA... Data provided by TMDB</p>
+    <footer className='container mx-auto py-4 bg-white md:flex md:items-center md:justify-between md:p-6 dark:bg-bgdark'>
+      <span className='text-sm text-gray-500 dark:text-gray-400'>
+        <p>{`© ${new Date().getFullYear()} McPixel. All Rights Reserved.`}</p>
+        <p>Built by <ExtLink to='https://github.com/McPixeI' label='McPixel' />. Data provided by <ExtLink to='https://www.themoviedb.org/' label='TMDB' />.</p>
       </span>
       <ul className='flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0'>
         <li>

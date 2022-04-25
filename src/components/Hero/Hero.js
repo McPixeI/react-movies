@@ -1,9 +1,10 @@
 import { API_IMG_BASE_PATH } from '../../utils/constants/api'
+import { BACKDROP_SIZE } from '../../utils/constants/media'
 
 export const Hero = ({ media, children, ...rest }) => {
   return (
     <div
-      style={{ backgroundImage: `url(${API_IMG_BASE_PATH}/w1280/${media.backdrop_path})`, backgroundSize: 'cover' }}
+      style={{ backgroundImage: `url(${API_IMG_BASE_PATH}/${BACKDROP_SIZE.LARGE}/${media.backdrop_path})`, backgroundSize: 'cover' }}
       className='w-full min-h-[400px] md:min-h-[520px] relative overflow-hidden mx-auto flex flex-col md:flex-row items-center px-4 py-12 md:py-24 mb-10' {...rest}
     >
       <div className='absolute bg-gradient-to-t from-bgdark bg-opacity-50 inset-0' />

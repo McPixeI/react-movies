@@ -1,4 +1,4 @@
-
+// Available sizes provided by TMDBAPI
 export const BACKDROP_SIZE = {
   SMALL: 'w300',
   MEDIUM: 'w780',
