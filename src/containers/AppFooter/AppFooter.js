@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { ExtLink } from '../../components/UI/Links/ExtLink/ExtLink'
 import { NAV_ITEMS } from '../../utils/config/nav-items'
 export const AppFooter = () => {
@@ -11,7 +12,7 @@ export const AppFooter = () => {
         {NAV_ITEMS.map(item => {
           return (
             <li key={item.id}>
-              <a href={item.to} className='mr-4 hover:underline md:mr-6 '>{item.label}</a>
+              <Link to={item.to} className='mr-4 hover:underline md:mr-6 '>{item.label}</Link>
             </li>
           )
         })}
