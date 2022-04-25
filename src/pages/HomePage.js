@@ -42,7 +42,7 @@ export const HomePage = () => {
           breakpoints={defaultSwiperConfig}
           grabCursor
         >
-          {medias?.map(media =>
+          {medias.map(media =>
             <SwiperSlide key={media.id}>
               <MediaItem {...media} />
             </SwiperSlide>)}

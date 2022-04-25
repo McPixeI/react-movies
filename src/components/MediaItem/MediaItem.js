@@ -4,7 +4,6 @@ import { API_IMG_BASE_PATH } from '../../utils/constants/api'
 import Badge from '../UI/Badge'
 import { Link } from 'react-router-dom'
 import { Image } from '../Image/Image'
-import fallbackImage from '../../images/media-fallback.png'
 
 export const MediaItem = media => {
   const {
@@ -23,9 +22,10 @@ export const MediaItem = media => {
         <CardHeading className='aspect-[2/3] overflow-hidden'>
           <Image
             className='w-full block hover:scale-105 transition-transform duration-300 object-cover'
-            fallback={fallbackImage}
+            // fallback={fallbackImage}
             src={`${API_IMG_BASE_PATH}/${BACKDROP_SIZE.SMALL}/${posterPath}`}
             alt={`${mediaName} poster`}
+            loading='lazy'
           />
           {rating > 0 && <Badge className='absolute top-3 right-1 opacity-80'>{rating.toFixed(1)}</Badge>}
         </CardHeading>

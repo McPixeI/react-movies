@@ -4,8 +4,8 @@ export const Image = ({
   src,
   alt,
   fallback,
-  lazy = true,
-  className
+  className,
+  ...rest
 }) => {
   const handleError = (evt) => {
     const target = evt.currentTarget
@@ -19,8 +19,8 @@ export const Image = ({
       src={src}
       alt={alt}
       onError={handleError}
-      loading={lazy ? 'lazy' : 'eager'}
       className={className}
+      {...rest}
     />
   )
 }
@@ -28,7 +28,6 @@ export const Image = ({
 Image.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string,
-  fallback: PropTypes.string.isRequired,
-  lazy: PropTypes.bool,
+  fallback: PropTypes.string,
   className: PropTypes.string
 }
