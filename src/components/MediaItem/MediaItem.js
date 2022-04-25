@@ -5,9 +5,10 @@ import Badge from '../UI/Badge'
 import { Link } from 'react-router-dom'
 import { Image } from '../Image/Image'
 
-export const MediaItem = media => {
+export const MediaItem = ({ media, mediaType }) => {
   const {
-    title, name,
+    title,
+    name,
     media_type: type,
     id,
     poster_path: posterPath,
@@ -18,8 +19,8 @@ export const MediaItem = media => {
 
   return (
     <Card className='h-full'>
-      <Link to={`/${type}/${id}`}>
-        <CardHeading className='aspect-[2/3] overflow-hidden'>
+      <Link to={`/${mediaType || type}/${id}`}>
+        <CardHeading className='aspect-[2/3] overflow-hidden relative'>
           <Image
             className='w-full block hover:scale-105 transition-transform duration-300 object-cover'
             // fallback={fallbackImage}

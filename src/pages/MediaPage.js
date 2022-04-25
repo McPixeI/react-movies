@@ -13,6 +13,8 @@ export const MediaPage = () => {
 
   const { data, status } = useMedia(mediaType, mediaId)
 
+  console.log(data)
+
   if (status === STATUSES.LOADING) {
     return <Spinner />
   }

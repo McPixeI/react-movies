@@ -28,7 +28,7 @@ export const Trending = ({ mediaType }) => {
       >
         {medias?.map(media =>
           <SwiperSlide key={media.id}>
-            <MediaItem {...media} />
+            <MediaItem media={media} />
           </SwiperSlide>)}
       </Swiper>
     </Section>
