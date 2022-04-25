@@ -8,15 +8,15 @@ const placeholderData = Array.from({ length: 8 }, (v, index) => ({
   name: 'Loading...'
 }))
 
-const getTrendingMedia = async () => {
+const getTrendingMedia = async (mediaType) => {
   const data = await axios.get(
-    `${API_BASE_PATH}/trending/all/day?api_key=${API_KEY}`
+    `${API_BASE_PATH}/trending/${mediaType}/week?api_key=${API_KEY}`
   ).then(res => res.data.results)
   return data
 }
 
-export const useTrendingMedia = () => {
-  const result = useQuery(['trending-media'], () => getTrendingMedia(), {
+export const useTrendingMedia = (mediaType = 'all') => {
+  const result = useQuery(['trending-media', { mediaType }], () => getTrendingMedia(mediaType), {
     placeholderData: placeholderData,
     staleTime: 5000
   })

@@ -9,9 +9,11 @@ import { Hero } from '../components/Hero/Hero'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Section } from '../containers/Section/Section'
+import { API_MEDIA_TYPE } from '../utils/constants/api'
+import { Trending } from '../partials/Trending/Trending'
 
 export const HomePage = () => {
-  const { medias, isError, error, isLoading } = useTrendingMedia()
+  const { medias, isError, error, isLoading } = useTrendingMedia(API_MEDIA_TYPE.MOVIE)
   const [cover, setCover] = useState({})
 
   useEffect(() => {
@@ -32,22 +34,8 @@ export const HomePage = () => {
           <Button>Ver más</Button>
         </Link>
       </Hero>
-      <Section title='Trending now'>
-        <Swiper
-          key={medias.length} // Key for rerendering swiper when cast array changes
-          navigation
-          modules={[Navigation]}
-          slidesPerView={2}
-          spaceBetween={8}
-          breakpoints={defaultSwiperConfig}
-          grabCursor
-        >
-          {medias.map(media =>
-            <SwiperSlide key={media.id}>
-              <MediaItem {...media} />
-            </SwiperSlide>)}
-        </Swiper>
-      </Section>
+      <Trending mediaType={API_MEDIA_TYPE.MOVIE} />
+      <Trending mediaType={API_MEDIA_TYPE.TV} />
 
     </>
   )
