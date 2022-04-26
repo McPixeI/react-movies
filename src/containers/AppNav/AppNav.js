@@ -17,8 +17,8 @@ const AppNavLink = ({ props }) => {
 
 export const AppNav = () => {
   return (
-    <nav className='shadow-md bg-white border-gray-200 px-4 py-5 rounded dark:bg-bgdark'>
-      <div className='container px-2 flex flex-wrap justify-between items-center mx-auto'>
+    <nav className='shadow-md bg-white border-gray-200 py-5 rounded dark:bg-bgdark'>
+      <div className='container px-4 flex flex-wrap justify-between items-center mx-auto'>
         <Link to='/' className='flex items-center'>
           <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'><span className='text-primary'>React</span> Movies</span>
         </Link>

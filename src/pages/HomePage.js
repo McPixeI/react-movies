@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { API_MEDIA_TYPE } from '../utils/constants/api'
 import { Trending } from '../partials/Trending/Trending'
+import { Container } from '../containers/Container/Container'
 
 export const HomePage = () => {
   const { medias, isError, error, isLoading } = useTrendingMedia(API_MEDIA_TYPE.MOVIE)
@@ -18,8 +19,7 @@ export const HomePage = () => {
   if (isLoading) return <Spinner />
 
   if (isError) {
-    console.log(`Error loading home page: ${error}`)
-    return 'Error'
+    return `Error loading Trending medias for HomePage: ${error}`
   }
 
   return (
@@ -29,8 +29,10 @@ export const HomePage = () => {
           <Button>Ver más</Button>
         </Link>
       </Hero>
-      <Trending mediaType={API_MEDIA_TYPE.MOVIE} />
-      <Trending mediaType={API_MEDIA_TYPE.TV} />
+      <Container>
+        <Trending mediaType={API_MEDIA_TYPE.MOVIE} />
+        <Trending mediaType={API_MEDIA_TYPE.TV} />
+      </Container>
     </>
   )
 }
