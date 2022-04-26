@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
 import { NAV_ITEMS } from '../../utils/config/nav-items'
+import { Searcher } from '../Searcher/Searcher'
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle'
 
 const AppNavLink = ({ props }) => {
@@ -18,7 +19,7 @@ const AppNavLink = ({ props }) => {
 export const AppNav = () => {
   return (
     <nav className='shadow-md bg-white border-gray-200 py-5 rounded dark:bg-bgdark'>
-      <div className='container px-4 flex flex-wrap justify-between items-center mx-auto'>
+      <div className='h-[34px] container px-4 flex flex-wrap justify-between items-center mx-auto'>
         <Link to='/' className='flex items-center'>
           <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'><span className='text-primary'>React</span> Movies</span>
         </Link>
@@ -30,6 +31,9 @@ export const AppNav = () => {
         <div className='hidden w-full md:block md:w-auto' id='mobile-menu'>
           <ul className='flex flex-col mt-4 justify-center items-center md:flex-row md:space-x-8 md:mt-0 md:text-md md:font-medium'>
             <li>
+              <Searcher />
+            </li>
+            <li>
               <ThemeToggle />
             </li>
             {NAV_ITEMS.map(item => {
@@ -39,6 +43,7 @@ export const AppNav = () => {
                 </li>
               )
             })}
+
           </ul>
         </div>
       </div>
