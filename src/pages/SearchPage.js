@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useSearchParams } from 'react-router-dom'
 import { MediaItem } from '../components/MediaItem/MediaItem'
@@ -11,11 +11,11 @@ export const SearchPage = (props) => {
   const query = searchParams.get('q')
   const { ref, inView } = useInView()
 
+  console.log(query)
+
   const { data, status, error, isFetchingNextPage, hasNextPage, fetchNextPage } = useSearch(query)
 
-  console.log(data)
-
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
       fetchNextPage()
     }

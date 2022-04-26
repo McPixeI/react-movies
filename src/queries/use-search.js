@@ -1,6 +1,7 @@
 import { useInfiniteQuery } from 'react-query'
 import axios from 'axios'
 import { API_KEY, API_BASE_PATH } from '../utils/constants/api'
+import { useMatch } from 'react-router-dom'
 
 /* const placeholderData = Array.from({ length: 8 }, (v, index) => ({
   id: `loading-popular-${index}`,
@@ -16,8 +17,10 @@ const getSearch = async (query, pageParam = 1) => {
 }
 
 export const useSearch = (query) => {
-  const result = useInfiniteQuery(['popular-media', { query }], ({ pageParam = 1 }) => getSearch(query, pageParam), {
-    enabled: Boolean(query),
+  const isSearchRoute = useMatch('/search')
+
+  const result = useInfiniteQuery(['search-media', { query }], ({ pageParam = 1 }) => getSearch(query, pageParam), {
+    enabled: Boolean(isSearchRoute && query.length > 0),
     getNextPageParam: (lastPage, allPages) => {
       const maxPages = lastPage.total_pages
       const nextPage = allPages.length + 1
