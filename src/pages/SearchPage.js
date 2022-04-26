@@ -1,4 +1,3 @@
-import { navigate } from '@storybook/addon-links'
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate, useSearchParams } from 'react-router-dom'
@@ -44,7 +43,7 @@ export const SearchPage = (props) => {
     <Container>
       <h1 className='text-3xl font-semibold mb-6'>{`Search results for: ${query}`}</h1>
       <div className='mx-auto pt-2 pb-4 lg:max-w-7xl'>
-        <div className='mt-6 grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-4 lg:grid-cols-5 xl:gap-x-8'>
+        <div className='mt-6 grid grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-4 lg:grid-cols-5 xl:gap-x-4'>
           {data?.pages.map(page => (
             <React.Fragment key={page.page}>
               {page.results.map(media => (

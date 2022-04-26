@@ -35,7 +35,11 @@ const SearchProvider = ({ children }) => {
 
   const setQuery = useCallback(
     (query) => {
-      setQueryParams({ q: query })
+      if (query.length > 0) {
+        setQueryParams({ q: query })
+      } else {
+        setQueryParams({})
+      }
     },
     [setQueryParams]
   )

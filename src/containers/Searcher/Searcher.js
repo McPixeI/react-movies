@@ -1,5 +1,5 @@
 import { SearchIcon, XIcon } from '@heroicons/react/solid'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { TextInput } from '../../components/UI/Forms/TextInput/TextInput'
 import { useSearchContext } from '../../context/search-context'
 import { useDebounce } from '../../utils/hooks/use-debounce'
@@ -8,19 +8,32 @@ export const Searcher = (props) => {
   const { query, setQuery, isShown, setIsShown } = useSearchContext()
   const [value, setValue] = useState(query)
   const debouncedValue = useDebounce(value, 500)
-  const inputRef = useRef(null)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    if (query) {
+      setIsShown(true)
+    }
+  }, [query, setIsShown])
 
   useEffect(() => {
     setQuery(debouncedValue)
     if (isShown) {
-      inputRef.current.focus()
+      ref.current.focus()
     }
   }, [isShown, setQuery, debouncedValue])
+
+  const handleToggleClick = useCallback((evt) => {
+    setIsShown(!isShown)
+    if (isShown) {
+      setValue('')
+    }
+  }, [isShown, setIsShown])
 
   return (
     <div className='flex items-center '>
       <TextInput
-        ref={inputRef}
+        ref={ref}
         onChange={(evt) => setValue(evt.target.value)}
         name='searchbar'
         size='sm'
@@ -31,7 +44,7 @@ export const Searcher = (props) => {
       />
       <div
         className='cursor-pointer px-4 ml-2 text-gray-700 hover:text-gray-900 md:p-0 dark:text-gray-400 md:dark:hover:text-white w-6 h-6'
-        onClick={() => setIsShown(!isShown)}
+        onClick={handleToggleClick}
       >
         {isShown ? <XIcon /> : <SearchIcon />}
       </div>
