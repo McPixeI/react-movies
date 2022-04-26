@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
-import { useState } from 'react'
 
 export const TextInput = ({
   name,
@@ -13,7 +12,7 @@ export const TextInput = ({
   error = '',
   required = false,
   className,
-  onChange,
+  onChange = () => {},
   ...rest
 }) => {
   const classes = clsx(
@@ -27,13 +26,6 @@ export const TextInput = ({
     },
     className
   )
-
-  const [state, setState] = useState(value)
-
-  const handleChange = evt => {
-    evt.preventDefault()
-    setState(evt.target.value)
-  }
 
   return (
     <>
@@ -52,9 +44,9 @@ export const TextInput = ({
         placeholder={placeholder}
         size={size}
         name={name}
-        value={state}
+        value={value}
         disabled={disabled}
-        onChange={evt => handleChange(evt)}
+        onChange={onChange}
         {...rest}
       />
       {error && <p class='text-sm text-red-600 dark:text-red-500'>{error}</p>}
@@ -71,5 +63,6 @@ TextInput.propTypes = {
   disabled: PropTypes.bool,
   error: PropTypes.string,
   required: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
+  onChange: PropTypes.func.isRequired
 }

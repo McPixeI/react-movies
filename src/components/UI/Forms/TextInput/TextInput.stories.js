@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { TextInput } from './TextInput'
 
@@ -7,7 +7,10 @@ export default {
   component: TextInput
 }
 
-const Template = args => <TextInput {...args} />
+const Template = args => {
+  const [value, setValue] = useState('')
+  return <TextInput {...args} value={value} onChange={(evt) => setValue(evt.target.value)} />
+}
 
 export const Large = Template.bind({})
 Large.args = {
