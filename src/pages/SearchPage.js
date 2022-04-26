@@ -4,16 +4,14 @@ import { useSearchParams } from 'react-router-dom'
 import { MediaItem } from '../components/MediaItem/MediaItem'
 import Spinner from '../components/UI/Spinner'
 import { Container } from '../containers/Container/Container'
-import { useSearch } from '../queries/use-search'
+import { useSearchContext } from '../context/search-context'
 
 export const SearchPage = (props) => {
   const [searchParams] = useSearchParams()
   const query = searchParams.get('q')
   const { ref, inView } = useInView()
 
-  console.log(query)
-
-  const { data, status, error, isFetchingNextPage, hasNextPage, fetchNextPage } = useSearch(query)
+  const { data, status, error, isFetchingNextPage, hasNextPage, fetchNextPage } = useSearchContext(query)
 
   useEffect(() => {
     if (inView) {

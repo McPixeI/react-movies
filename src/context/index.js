@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { SearchProvider } from './search-context'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,7 +25,11 @@ const queryClient = new QueryClient({
 function AppProviders ({ children }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router>{children}</Router>
+      <Router>
+        <SearchProvider>
+          {children}
+        </SearchProvider>
+      </Router>
     </QueryClientProvider>
   )
 }
