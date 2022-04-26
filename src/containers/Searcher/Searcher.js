@@ -7,8 +7,8 @@ import { useDebounce } from '../../utils/hooks/use-debounce'
 export const Searcher = (props) => {
   const { query, setQuery, isShown, setIsShown } = useSearchContext()
   const [value, setValue] = useState(query)
-  const inputRef = useRef(null)
   const debouncedValue = useDebounce(value, 500)
+  const inputRef = useRef(null)
 
   useEffect(() => {
     setQuery(debouncedValue)
@@ -33,7 +33,7 @@ export const Searcher = (props) => {
         className='cursor-pointer px-4 ml-2 text-gray-700 hover:text-gray-900 md:p-0 dark:text-gray-400 md:dark:hover:text-white w-6 h-6'
         onClick={() => setIsShown(!isShown)}
       >
-        {isShown ? <XIcon className='' /> : <SearchIcon className='' />}
+        {isShown ? <XIcon /> : <SearchIcon />}
       </div>
     </div>
   )
