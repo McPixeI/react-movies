@@ -1,19 +1,17 @@
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { MediaItem } from '../components/MediaItem/MediaItem'
 import Spinner from '../components/UI/Spinner'
 import { Container } from '../containers/Container/Container'
 import { useSearchContext } from '../context/search-context'
 
 export const SearchPage = (props) => {
-  const [searchParams] = useSearchParams()
-  const query = searchParams.get('q')
   const { ref, inView } = useInView()
   const navigate = useNavigate()
 
   const {
-    query: contextQuery,
+    query,
     setIsShown,
     data,
     status,
@@ -21,14 +19,14 @@ export const SearchPage = (props) => {
     isFetchingNextPage,
     hasNextPage,
     fetchNextPage
-  } = useSearchContext(query)
+  } = useSearchContext()
 
   useEffect(() => {
-    if (!contextQuery) {
+    if (!query) {
       setIsShown(false)
       navigate('/')
     }
-  }, [contextQuery, navigate, setIsShown])
+  }, [query, navigate, setIsShown])
 
   useEffect(() => {
     if (inView) {

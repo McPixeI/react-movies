@@ -4,30 +4,20 @@ import { TextInput } from '../../components/UI/Forms/TextInput/TextInput'
 import { useSearchContext } from '../../context/search-context'
 import { useDebounce } from '../../utils/hooks/use-debounce'
 
-export const Searcher = (props) => {
+export const Searcher = () => {
   const { query, setQuery, isShown, setIsShown } = useSearchContext()
   const [value, setValue] = useState(query)
   const debouncedValue = useDebounce(value, 500)
   const ref = useRef(null)
 
   useEffect(() => {
-    if (query) {
-      setIsShown(true)
-    }
-  }, [query, setIsShown])
-
-  useEffect(() => {
     setQuery(debouncedValue)
-    if (isShown) {
-      ref.current.focus()
-    }
+    isShown && ref.current.focus()
   }, [isShown, setQuery, debouncedValue])
 
   const handleToggleClick = useCallback((evt) => {
+    isShown && setValue('')
     setIsShown(!isShown)
-    if (isShown) {
-      setValue('')
-    }
   }, [isShown, setIsShown])
 
   return (

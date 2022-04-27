@@ -3,10 +3,11 @@ import { createSearchParams, useLocation, useNavigate, useSearchParams } from 'r
 import { useSearch } from '../queries/use-search'
 
 const initialState = {
-  isShown: false,
-  setIsShown: () => {},
   query: '',
-  setQuery: () => {}
+  setQuery: () => {},
+  data: [],
+  isShown: false,
+  setIsShown: () => {}
 }
 
 export const SearchContext = createContext(initialState)
