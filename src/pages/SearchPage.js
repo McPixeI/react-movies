@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { useNavigate } from 'react-router-dom'
 import { MediaItem } from '../components/MediaItem/MediaItem'
 import Spinner from '../components/UI/Spinner'
 import { Container } from '../containers/Container/Container'
@@ -8,11 +7,9 @@ import { useSearchContext } from '../context/search-context'
 
 export const SearchPage = (props) => {
   const { ref, inView } = useInView()
-  const navigate = useNavigate()
 
   const {
     query,
-    setIsShown,
     data,
     status,
     error,
@@ -20,13 +17,6 @@ export const SearchPage = (props) => {
     hasNextPage,
     fetchNextPage
   } = useSearchContext()
-
-  useEffect(() => {
-    if (!query) {
-      setIsShown(false)
-      navigate('/')
-    }
-  }, [query, navigate, setIsShown])
 
   useEffect(() => {
     if (inView) {

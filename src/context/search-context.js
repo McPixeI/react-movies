@@ -1,49 +1,11 @@
-import { createContext, useCallback, useContext, useEffect, useState } from 'react'
-import { createSearchParams, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
+import { createContext, useContext, useState } from 'react'
 import { useSearch } from '../queries/use-search'
 
-const initialState = {
-  query: '',
-  setQuery: () => {},
-  data: [],
-  isShown: false,
-  setIsShown: () => {}
-}
-
-export const SearchContext = createContext(initialState)
+export const SearchContext = createContext()
 SearchContext.displayName = 'SearchContext'
 
 const SearchProvider = ({ children }) => {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const [queryParams, setQueryParams] = useSearchParams()
-  const [isShown, setIsShown] = useState(false)
-
-  const query = queryParams.get('q') ?? ''
-
-  useEffect(() => {
-    if (query.length > 0) {
-      if (location.pathname !== '/search') {
-        navigate({
-          pathname: 'search',
-          search: createSearchParams({
-            q: query
-          }).toString()
-        })
-      }
-    }
-  }, [query, location.pathname, navigate])
-
-  const setQuery = useCallback(
-    (query) => {
-      if (query.length > 0) {
-        setQueryParams({ q: query })
-      } else {
-        setQueryParams({})
-      }
-    },
-    [setQueryParams]
-  )
+  const [query, setQuery] = useState('')
 
   const {
     data,
@@ -57,8 +19,6 @@ const SearchProvider = ({ children }) => {
   return (
     <SearchContext.Provider
       value={{
-        isShown,
-        setIsShown,
         query,
         setQuery,
         data,
