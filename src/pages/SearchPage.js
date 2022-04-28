@@ -52,7 +52,6 @@ export const SearchPage = (props) => {
           </div>
           {isFetchingNextPage && <Spinner align='center' />}
           {!hasNextPage && <p className='text-center'>No more results</p>}
-          )
         </>}
 
     </Container>
