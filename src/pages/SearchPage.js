@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
+import { useSearchParams } from 'react-router-dom'
 import { MediaItem } from '../components/MediaItem/MediaItem'
 import Spinner from '../components/UI/Spinner'
 import { Container } from '../containers/Container/Container'
@@ -8,9 +9,12 @@ import { API_MEDIA_TYPE } from '../utils/constants/api'
 
 export const SearchPage = (props) => {
   const { ref, inView } = useInView()
+  const [params] = useSearchParams()
+  const queryString = params.get('q')
 
   const {
     query,
+    setQuery,
     data,
     status,
     error,
@@ -18,6 +22,13 @@ export const SearchPage = (props) => {
     hasNextPage,
     fetchNextPage
   } = useSearchContext()
+
+  /* MEMO: If user enters search directly by URL */
+  useEffect(() => {
+    if (queryString) {
+      setQuery(queryString)
+    }
+  }, [queryString, setQuery])
 
   useEffect(() => {
     if (inView) {

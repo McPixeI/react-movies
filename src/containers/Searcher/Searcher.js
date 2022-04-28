@@ -1,6 +1,6 @@
 import { SearchIcon, XIcon } from '@heroicons/react/solid'
 import { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { TextInput } from '../../components/UI/Forms/TextInput/TextInput'
 import { useSearchContext } from '../../context/search-context'
 import { useOutsideClick } from '../../utils/hooks/use-outside-click'
@@ -16,8 +16,9 @@ export const Searcher = () => {
   const inputRef = useRef()
 
   useEffect(() => {
+    if (inputValue.length > 0) setQuery(debouncedValue)
     isShown && inputRef.current.focus()
-  }, [isShown])
+  }, [isShown, setQuery, debouncedValue, inputValue])
 
   useOutsideClick(searchbarRef, () => {
     if (isShown) {
@@ -29,7 +30,7 @@ export const Searcher = () => {
   const handleSearchInput = (event) => {
     const { value } = event.target
     setInputValue(value)
-    setQuery(value)
+    // setQuery(value)
     if (value.length > 0) {
       navigate(`/search?q=${value}`)
     } else {
