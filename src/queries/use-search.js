@@ -3,16 +3,11 @@ import axios from 'axios'
 import { API_KEY, API_BASE_PATH } from '../utils/constants/api'
 import { useMatch } from 'react-router-dom'
 
-/* const placeholderData = Array.from({ length: 8 }, (v, index) => ({
-  id: `loading-popular-${index}`,
-  title: 'Loading...',
-  name: 'Loading...'
-})) */
-
 const getSearch = async (query, pageParam = 1) => {
   const data = await axios.get(
     `${API_BASE_PATH}/search/multi?api_key=${API_KEY}&query=${query}&page=${pageParam}`
   ).then(res => res.data)
+  console.log(data)
   return data
 }
 

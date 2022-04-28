@@ -4,5 +4,6 @@ export const API_IMG_BASE_PATH = process.env.REACT_APP_API_IMG_BASE_PATH
 
 export const API_MEDIA_TYPE = {
   MOVIE: 'movie',
-  TV: 'tv'
+  TV: 'tv',
+  PERSON: 'person'
 }
