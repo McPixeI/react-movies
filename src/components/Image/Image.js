@@ -9,7 +9,9 @@ export const Image = ({
 }) => {
   const handleError = (evt) => {
     const target = evt.currentTarget
-    target.src = fallback
+    if (fallback) {
+      target.src = fallback
+    }
     target.alt = ''
     target.className = 'absolute left-0 top-1/3'
   }
