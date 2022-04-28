@@ -1,6 +1,6 @@
 import { SearchIcon, XIcon } from '@heroicons/react/solid'
 import { useEffect, useRef, useState } from 'react'
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { TextInput } from '../../components/UI/Forms/TextInput/TextInput'
 import { useSearchContext } from '../../context/search-context'
 import { useOutsideClick } from '../../utils/hooks/use-outside-click'
@@ -16,7 +16,9 @@ export const Searcher = () => {
   const inputRef = useRef()
 
   useEffect(() => {
-    if (inputValue.length > 0) setQuery(debouncedValue)
+    if (inputValue.length > 0) {
+      setQuery(debouncedValue)
+    }
     isShown && inputRef.current.focus()
   }, [isShown, setQuery, debouncedValue, inputValue])
 
