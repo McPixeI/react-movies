@@ -15,7 +15,6 @@ export const SearchPage = () => {
     status,
     error,
     isFetchingNextPage,
-    hasNextPage,
     fetchNextPage
   } = useSearchContext()
 
@@ -50,7 +49,6 @@ export const SearchPage = () => {
             </div>
           </div>
           {isFetchingNextPage && <Spinner align='center' />}
-          {!hasNextPage && <p className='text-center'>No more results</p>}
         </>}
     </Container>
   )

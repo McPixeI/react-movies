@@ -55,7 +55,7 @@ export const Searcher = () => {
         type='button'
         onClick={() => setIsShown(!isShown)}
       >
-        {/* The pointer events none avoids detect click on svg and only on parent div */}
+        {/* The pointer-events-none avoids detect click on svg and only on parent div */}
         {isShown ? <XIcon className='pointer-events-none' /> : <SearchIcon className='pointer-events-none' />}
       </div>
     </div>
