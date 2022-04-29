@@ -6,4 +6,4 @@ const STATUSES = Object.freeze({
   ERROR: 'error'
 })
 
-export default STATUSES
+export { STATUSES }

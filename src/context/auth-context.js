@@ -12,7 +12,7 @@ function AuthProvider ({ children }) {
   const [sessionId, setSessionId] = useLocalStorageState('session_id', '')
 
   const [state, setState] = useState({
-    status: STATUSES.IDLE,
+    status: 'idle',
     error: null,
     sessionId: ''
   })
@@ -25,7 +25,7 @@ function AuthProvider ({ children }) {
         if (!requestToken && initialSessionId) {
           setState({
             ...state,
-            status: STATUSES.RESOLVED,
+            status: STATUSES.SUCCESS,
             sessionId: initialSessionId
           })
           return
@@ -48,14 +48,14 @@ function AuthProvider ({ children }) {
         setSessionId(sessionId)
 
         setState({
-          status: STATUSES.RESOLVED,
+          status: STATUSES.SUCCESS,
           error: null,
           sessionId: sessionId
         })
       } catch (error) {
         console.log('AuthProvider useEffect errorr: ', error)
         setState({
-          status: STATUSES.REJECTED,
+          status: STATUSES.ERROR,
           error,
           sessionId: ''
         })
@@ -68,7 +68,7 @@ function AuthProvider ({ children }) {
       const currentURL = window.location.href
       setState({
         ...state,
-        status: STATUSES.PENDING
+        status: STATUSES.LOADING
       })
       const response = await axios
         .get(
@@ -109,7 +109,7 @@ function AuthProvider ({ children }) {
       sessionId('')
 
       setState({
-        status: STATUSES.RESOLVED,
+        status: STATUSES.SUCCESS,
         error: null,
         sessionId: ''
       })
@@ -117,7 +117,7 @@ function AuthProvider ({ children }) {
       console.log('set logout error: ', error)
       setState({
         ...state,
-        status: STATUSES.REJECTED,
+        status: STATUSES.ERROR,
         error
       })
     }
@@ -132,9 +132,9 @@ function AuthProvider ({ children }) {
 
 const useAuth = () => {
   const { state = {}, login, logout } = useContext(AuthContext) || {}
-  const isPending = state.status === STATUSES.PENDING
-  const isError = state.status === STATUSES.REJECTED
-  const isSuccess = state.status === STATUSES.RESOLVED
+  const isPending = state.status === STATUSES.LOADING
+  const isError = state.status === STATUSES.ERROR
+  const isSuccess = state.status === STATUSES.SUCCESS
   const isAuthenticated = state.sessionId && isSuccess
 
   return {
