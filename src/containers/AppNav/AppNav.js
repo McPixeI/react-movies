@@ -12,7 +12,7 @@ const AppNavLink = ({ props }) => {
     <NavLink
       to={props.to}
       className={({ isActive }) => {
-        return 'block py-2 pr-4 pl-3 text-gray-700 hover:text-gray-900 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:text-white' +
+        return 'block py-2 px-2 text-gray-700 hover:text-gray-900 dark:text-gray-400 md:dark:hover:text-white dark:hover:text-white' +
         (isActive ? ' text-primary dark:text-primary' : '')
       }}
     >{props.label}
@@ -25,7 +25,7 @@ const Menu = ({ props }) => {
     <ul className='flex flex-col mt-4 justify-center items-center md:flex-row md:space-x-8 md:mt-0 md:text-md md:font-medium'>
       {NAV_ITEMS.map(item => {
         return (
-          <li className='px-1' key={item.id}>
+          <li key={item.id}>
             <AppNavLink props={item} />
           </li>
         )
@@ -49,8 +49,8 @@ export const AppNav = () => {
   )
 
   return (
-    <nav className='shadow-md bg-white border-gray-200 py-5 rounded dark:bg-bgdark'>
-      <div className='h-[34px] container px-4 flex flex-wrap justify-between items-center mx-auto'>
+    <nav className='shadow-md bg-white border-gray-200 h-[74px] flex items-center dark:bg-bgdark'>
+      <div className='container px-4 flex flex-wrap justify-between items-center mx-auto'>
         <Link to='/' className='flex items-center'>
           <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>
             <span className='text-primary'>React</span> Movies
@@ -75,7 +75,7 @@ export const AppNav = () => {
           <div className={mobileMenuClasses} id='mobile-menu' ref={mobileMenuRef}>
             <Menu />
           </div>
-          <div className='hidden md:block relative w-auto' id='desktop-menu'>
+          <div className='hidden ml-4 md:block relative w-auto' id='desktop-menu'>
             <Menu />
           </div>
         </div>
