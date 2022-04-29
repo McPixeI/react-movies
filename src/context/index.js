@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { AuthProvider } from './auth-context'
 import { SearchProvider } from './search-context'
 
 const queryClient = new QueryClient({
@@ -15,7 +16,7 @@ const queryClient = new QueryClient({
       // only show error toasts if we already have data in the cache
       // which indicates a failed background update
       if (query.state.data !== undefined) {
-        // TODO: MOSTRAR UNA ALAERT O TOAST EN LUGAR DE CONSOLE ERROR
+        // TODO: MOSTRAR UNA ALERT O TOAST EN LUGAR DE CONSOLE ERROR
         console.error(`Something went wrong: ${error.message}`)
       }
     }
@@ -26,9 +27,11 @@ function AppProviders ({ children }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <SearchProvider>
-          {children}
-        </SearchProvider>
+        <AuthProvider>
+          <SearchProvider>
+            {children}
+          </SearchProvider>
+        </AuthProvider>
       </Router>
     </QueryClientProvider>
   )
