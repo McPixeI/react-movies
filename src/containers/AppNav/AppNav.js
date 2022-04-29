@@ -1,3 +1,6 @@
+import { MenuIcon, XIcon } from '@heroicons/react/solid'
+import clsx from 'clsx'
+import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { NAV_ITEMS } from '../../utils/config/nav-items'
 import { Searcher } from '../Searcher/Searcher'
@@ -17,18 +20,33 @@ const AppNavLink = ({ props }) => {
 }
 
 export const AppNav = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const menuClasses = clsx(
+    'transition-all bg-white dark:bg-bgdark shadow-lg md:shadow-none fixed inset-y-0  w-[300px] z-50 md:relative md:inset-0 md:block md:w-auto',
+    { 'left-[-300px]': !isOpen },
+    { 'left-0': isOpen }
+  )
+
   return (
     <nav className='shadow-md bg-white border-gray-200 py-5 rounded dark:bg-bgdark'>
       <div className='h-[34px] container px-4 flex flex-wrap justify-between items-center mx-auto'>
         <Link to='/' className='flex items-center'>
-          <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'><span className='text-primary'>React</span> Movies</span>
+          <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>
+            <span className='text-primary'>React</span> Movies
+          </span>
         </Link>
-        <button data-collapse-toggle='mobile-menu' type='button' className='inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none' aria-controls='mobile-menu' aria-expanded='false'>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          data-collapse-toggle='mobile-menu'
+          type='button'
+          className='inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none'
+          aria-controls='mobile-menu'
+        >
           <span className='sr-only'>Open main menu</span>
-          <svg className='w-6 h-6' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path fillRule='evenodd' d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z' clipRule='evenodd' /></svg>
-          <svg className='hidden w-6 h-6' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path fillRule='evenodd' d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z' clipRule='evenodd' /></svg>
+          {isOpen ? <XIcon className='w-6 h-6' /> : <MenuIcon className='w-6 h-6' />}
         </button>
-        <div className='hidden w-full md:block md:w-auto' id='mobile-menu'>
+        <div className={menuClasses} id='mobile-menu'>
           <ul className='flex flex-col mt-4 justify-center items-center md:flex-row md:space-x-8 md:mt-0 md:text-md md:font-medium'>
             <li>
               <Searcher />
@@ -43,7 +61,6 @@ export const AppNav = () => {
                 </li>
               )
             })}
-
           </ul>
         </div>
       </div>
