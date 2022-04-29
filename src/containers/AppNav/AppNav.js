@@ -23,9 +23,9 @@ export const AppNav = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const menuClasses = clsx(
-    'transition-all bg-white dark:bg-bgdark shadow-lg md:shadow-none fixed inset-y-0  w-[300px] z-50 md:relative md:inset-0 md:block md:w-auto',
-    { 'left-[-300px]': !isOpen },
-    { 'left-0': isOpen }
+    'transition-transform tran bg-white dark:bg-bgdark shadow-lg md:shadow-none fixed inset-y-0 left-0  w-[300px] z-50 md:relative md:inset-0 md:block md:w-auto',
+    { 'translate-x-[-300px]': !isOpen },
+    { 'translate-x-0': isOpen }
   )
 
   return (
