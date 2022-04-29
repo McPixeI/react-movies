@@ -6,6 +6,7 @@ import { Hero } from '../components/Hero/Hero'
 import { Cast } from '../partials/Cast/Cast'
 import { Recommended } from '../partials/Recommended/Recommended'
 import { Details } from '../partials/Details/Details'
+import { Container } from '../containers/Container/Container'
 
 export const MediaPage = () => {
   const { mediaType, mediaId } = useParams()
@@ -25,9 +26,11 @@ export const MediaPage = () => {
   return (
     <>
       <Hero media={data} />
-      <Details mediaId={mediaId} mediaType={mediaType} />
-      <Cast mediaId={mediaId} mediaType={mediaType} />
-      <Recommended mediaId={mediaId} mediaType={mediaType} />
+      <Container>
+        <Details mediaId={mediaId} mediaType={mediaType} />
+        <Cast mediaId={mediaId} mediaType={mediaType} />
+        <Recommended mediaId={mediaId} mediaType={mediaType} />
+      </Container>
     </>
   )
 }
