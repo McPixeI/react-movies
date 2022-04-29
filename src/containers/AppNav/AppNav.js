@@ -1,6 +1,6 @@
 import { MenuIcon, XIcon } from '@heroicons/react/solid'
 import clsx from 'clsx'
-import { useCallback, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { NAV_ITEMS } from '../../utils/config/nav-items'
 import { useOutsideClick } from '../../utils/hooks/use-outside-click'
@@ -23,12 +23,9 @@ const AppNavLink = ({ props }) => {
 const Menu = ({ props }) => {
   return (
     <ul className='flex flex-col mt-4 justify-center items-center md:flex-row md:space-x-8 md:mt-0 md:text-md md:font-medium'>
-      <li>
-        <ThemeToggle />
-      </li>
       {NAV_ITEMS.map(item => {
         return (
-          <li key={item.id}>
+          <li className='px-1' key={item.id}>
             <AppNavLink props={item} />
           </li>
         )
@@ -60,7 +57,8 @@ export const AppNav = () => {
           </span>
         </Link>
         <div className='flex items-center'>
-          <Searcher className='mr-4' />
+          <Searcher />
+          <ThemeToggle />
           <button
             onClick={(evt) => {
               evt.stopPropagation()
