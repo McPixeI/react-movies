@@ -27,7 +27,7 @@ export const SearchPage = () => {
   if (status === 'error') return <span>Error: {error.message}</span>
   /* eslint-disable react/jsx-closing-tag-location */
   return (
-    <Container className='min-h-screen'>
+    <Container className='min-h-[90vh]'>
       <h1 className='text-3xl font-semibold mb-6'>{`Search results for: ${query.toLowerCase()}`}</h1>
       {status === 'loading'
         ? <Spinner align='center' />
