@@ -39,7 +39,7 @@ export const Searcher = () => {
   }
 
   return (
-    <div className='flex items-center' ref={searchbarRef}>
+    <div className='flex items-center md:mr-6' ref={searchbarRef}>
       <TextInput
         ref={inputRef}
         value={inputValue}
@@ -47,16 +47,16 @@ export const Searcher = () => {
         name='searchbar'
         size='sm'
         type='search'
-        placeholder='Search...'
-        className={`transition-all ${isShown ? 'w-60 visible' : 'w-0 px-0 invisible'}`}
+        placeholder='Search movies or shows...'
+        className={`absolute w-full top-0 left-0 py-6 z-50 rounded-none md:rounded-md md:py-4 md:top-0 md:relative ${isShown ? ' top-[74px] md:w-60 visible ' : 'md:w-0 invisible'}`}
       />
       <div
-        className='cursor-pointer px-4 ml-2 text-gray-700 hover:text-gray-900 md:p-0 dark:text-gray-400 md:dark:hover:text-white w-6 h-6'
+        className='cursor-pointer px-2 ml-2 text-gray-700 hover:text-gray-900 md:p-0 dark:text-gray-400 md:dark:hover:text-white '
         type='button'
         onClick={() => setIsShown(!isShown)}
       >
         {/* The pointer-events-none avoids detect click on svg and only on parent div */}
-        {isShown ? <XIcon className='pointer-events-none' /> : <SearchIcon className='pointer-events-none' />}
+        {isShown ? <XIcon className='pointer-events-none w-6 h-6' /> : <SearchIcon className='pointer-events-none w-6 h-6' />}
       </div>
     </div>
   )

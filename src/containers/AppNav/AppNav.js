@@ -1,8 +1,9 @@
 import { MenuIcon, XIcon } from '@heroicons/react/solid'
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { NAV_ITEMS } from '../../utils/config/nav-items'
+import { useOutsideClick } from '../../utils/hooks/use-outside-click'
 import { Searcher } from '../Searcher/Searcher'
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle'
 
@@ -19,11 +20,33 @@ const AppNavLink = ({ props }) => {
   )
 }
 
+const Menu = ({ props }) => {
+  return (
+    <ul className='flex flex-col mt-4 justify-center items-center md:flex-row md:space-x-8 md:mt-0 md:text-md md:font-medium'>
+      <li>
+        <ThemeToggle />
+      </li>
+      {NAV_ITEMS.map(item => {
+        return (
+          <li key={item.id}>
+            <AppNavLink props={item} />
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+
 export const AppNav = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const mobileMenuRef = useRef()
 
-  const menuClasses = clsx(
-    'transition-transform tran bg-white dark:bg-bgdark shadow-lg md:shadow-none fixed inset-y-0 left-0  w-[300px] z-50 md:relative md:inset-0 md:block md:w-auto',
+  useOutsideClick(mobileMenuRef, () => {
+    if (isOpen) setIsOpen(false)
+  })
+
+  const mobileMenuClasses = clsx(
+    'transition-transform bg-white dark:bg-bgdark shadow-lg fixed inset-y-0 left-0 w-[300px] z-50 md:hidden',
     { 'translate-x-[-300px]': !isOpen },
     { 'translate-x-0': isOpen }
   )
@@ -36,33 +59,29 @@ export const AppNav = () => {
             <span className='text-primary'>React</span> Movies
           </span>
         </Link>
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          data-collapse-toggle='mobile-menu'
-          type='button'
-          className='inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none'
-          aria-controls='mobile-menu'
-        >
-          <span className='sr-only'>Open main menu</span>
-          {isOpen ? <XIcon className='w-6 h-6' /> : <MenuIcon className='w-6 h-6' />}
-        </button>
-        <div className={menuClasses} id='mobile-menu'>
-          <ul className='flex flex-col mt-4 justify-center items-center md:flex-row md:space-x-8 md:mt-0 md:text-md md:font-medium'>
-            <li>
-              <Searcher />
-            </li>
-            <li>
-              <ThemeToggle />
-            </li>
-            {NAV_ITEMS.map(item => {
-              return (
-                <li key={item.id}>
-                  <AppNavLink props={item} />
-                </li>
-              )
-            })}
-          </ul>
+        <div className='flex items-center'>
+          <Searcher className='mr-4' />
+          <button
+            onClick={(evt) => {
+              evt.stopPropagation()
+              setIsOpen(!isOpen)
+            }}
+            data-collapse-toggle='mobile-menu'
+            type='button'
+            className='inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none'
+            aria-controls='mobile-menu'
+          >
+            <span className='sr-only'>Open main menu</span>
+            {isOpen ? <XIcon className='w-6 h-6' /> : <MenuIcon className='w-6 h-6' />}
+          </button>
+          <div className={mobileMenuClasses} id='mobile-menu' ref={mobileMenuRef}>
+            <Menu />
+          </div>
+          <div className='hidden md:block relative w-auto' id='desktop-menu'>
+            <Menu />
+          </div>
         </div>
+
       </div>
     </nav>
   )
