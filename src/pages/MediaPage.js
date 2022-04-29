@@ -10,8 +10,6 @@ import { Details } from '../partials/Details/Details'
 export const MediaPage = () => {
   const { mediaType, mediaId } = useParams()
 
-  console.log(useParams())
-
   const { data, status } = useMedia(mediaType, mediaId)
 
   console.log(data)

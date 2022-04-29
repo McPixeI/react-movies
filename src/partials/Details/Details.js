@@ -41,11 +41,11 @@ export const Details = ({ mediaType, mediaId }) => {
             </span>
           </div>
           <ul>
-            <li className='mb-1'><span className='font-medium'>Release date: </span>{releaseDate || '-'}</li>
-            <li className='mb-1'><span className='font-medium'>Budget: </span> {`${budget} $` || '-'}</li>
-            <li className='mb-1'><span className='font-medium'>Revenue: </span> {`${revenue} $` || '-'}</li>
-            <li className='mb-1'><span className='font-medium'>Run time: </span>{`${runtime} min` || '-'}</li>
-            <li className='mb-1'><span className='font-medium'>Production: </span> {production ? production.map(prod => `${prod.name}, `) : '-'}</li>
+            <li className='mb-1'><span className='text-gray-500 font-medium'>Release date: </span>{releaseDate || '-'}</li>
+            <li className='mb-1'><span className='text-gray-500 font-medium'>Budget: </span> {`${budget} $` || '-'}</li>
+            <li className='mb-1'><span className='text-gray-500 font-medium'>Revenue: </span> {`${revenue} $` || '-'}</li>
+            <li className='mb-1'><span className='text-gray-500 font-medium'>Run time: </span>{`${runtime} min` || '-'}</li>
+            <li className='mb-1'><span className='text-gray-500 font-medium'>Production: </span> {production ? production.map(prod => `${prod.name}, `) : '-'}</li>
           </ul>
         </div>
       </div>
