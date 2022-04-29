@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { useNavigate, useSearchParams } from 'react-router-dom'
 import { MediaItem } from '../components/MediaItem/MediaItem'
 import Spinner from '../components/UI/Spinner'
 import { Container } from '../containers/Container/Container'
 import { useSearchContext } from '../context/search-context'
 import { API_MEDIA_TYPE } from '../utils/constants/api'
 
-export const SearchPage = (props) => {
+export const SearchPage = () => {
   const { ref, inView } = useInView()
 
   const {
@@ -27,10 +26,10 @@ export const SearchPage = (props) => {
   }, [inView, fetchNextPage])
 
   if (status === 'error') return <span>Error: {error.message}</span>
-
+  /* eslint-disable react/jsx-closing-tag-location */
   return (
-    <Container>
-      <h1 className='text-3xl font-semibold mb-6'>{`Search results for: ${query}`}</h1>
+    <Container className='min-h-screen'>
+      <h1 className='text-3xl font-semibold mb-6'>{`Search results for: ${query.toLowerCase()}`}</h1>
       {status === 'loading'
         ? <Spinner align='center' />
         : <>
@@ -53,7 +52,7 @@ export const SearchPage = (props) => {
           {isFetchingNextPage && <Spinner align='center' />}
           {!hasNextPage && <p className='text-center'>No more results</p>}
         </>}
-
     </Container>
   )
+  /* eslint-enable react/jsx-closing-tag-location */
 }

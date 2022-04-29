@@ -7,18 +7,17 @@ SearchContext.displayName = 'SearchContext'
 
 const SearchProvider = ({ children }) => {
   const [query, setQuery] = useState('')
+  const [isShown, setIsShown] = useState(false)
   const [params] = useSearchParams()
-
   const queryString = params.get('q')
 
-  // ToDO: Si el usuario entra con una busqeuda hecha desde url
-  // ahora msotramos resultados, PERO
-  // Si escribe muy rapido no entra en el !query y no funciona el debounce
+  /* MEMO: Allows to enter a search directly from url
+  and prevents to change query on every keypress if searchbar is shown */
   useEffect(() => {
-    if (!query && queryString) {
+    if (!query && !isShown && queryString) {
       setQuery(queryString)
     }
-  }, [query, queryString])
+  }, [query, queryString, isShown])
 
   const {
     data,
@@ -34,6 +33,8 @@ const SearchProvider = ({ children }) => {
       value={{
         query,
         setQuery,
+        isShown,
+        setIsShown,
         data,
         status,
         error,

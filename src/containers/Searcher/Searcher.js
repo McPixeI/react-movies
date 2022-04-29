@@ -7,8 +7,7 @@ import { useOutsideClick } from '../../utils/hooks/use-outside-click'
 import { useDebounce } from '../../utils/hooks/use-debounce'
 
 export const Searcher = () => {
-  const { setQuery } = useSearchContext()
-  const [isShown, setIsShown] = useState(false)
+  const { setQuery, isShown, setIsShown } = useSearchContext()
   const [inputValue, setInputValue] = useState('')
   const debouncedValue = useDebounce(inputValue, 500)
   const navigate = useNavigate()
@@ -32,7 +31,6 @@ export const Searcher = () => {
   const handleSearchInput = (event) => {
     const { value } = event.target
     setInputValue(value)
-    // setQuery(value)
     if (value.length > 0) {
       navigate(`/search?q=${value}`)
     } else {
