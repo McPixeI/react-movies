@@ -4,6 +4,7 @@ import { API_IMG_BASE_PATH } from '../../utils/constants/api'
 import Badge from '../UI/Badge'
 import { Link } from 'react-router-dom'
 import { Image } from '../Image/Image'
+import { PhotographIcon } from '@heroicons/react/solid'
 
 export const MediaItem = ({ media, mediaType }) => {
   const {
@@ -21,13 +22,14 @@ export const MediaItem = ({ media, mediaType }) => {
     <Card className='h-full'>
       <Link to={`/${mediaType || type}/${id}`}>
         <CardHeading className='aspect-[2/3] overflow-hidden relative'>
-          <Image
-            className='w-full block hover:scale-105 transition-transform duration-300 object-cover'
-            // fallback={fallbackImage}
-            src={`${API_IMG_BASE_PATH}/${POSTER_SIZE.MEDIUM}/${posterPath}`}
-            alt={`${mediaName} poster`}
-            loading='lazy'
-          />
+          {posterPath
+            ? <Image
+                className='hover:scale-105 transition-transform duration-300'
+                src={`${API_IMG_BASE_PATH}/${POSTER_SIZE.MEDIUM}/${posterPath}`}
+                alt={`${mediaName} poster`}
+                loading='lazy'
+              />
+            : <PhotographIcon className='absolute top-2/4 -translate-y-2/4 text-gray-400' />}
           {rating > 0 && <Badge className='absolute top-3 right-1 opacity-80'>{rating.toFixed(1)}</Badge>}
         </CardHeading>
         <CardBody>

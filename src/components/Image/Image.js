@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 
 export const Image = ({
@@ -7,13 +8,14 @@ export const Image = ({
   className,
   ...rest
 }) => {
+  const classes = clsx('block w-full object-cover', className)
+
   const handleError = (evt) => {
     const target = evt.currentTarget
     if (fallback) {
       target.src = fallback
     }
     target.alt = ''
-    target.className = 'absolute left-0 top-1/3'
   }
 
   return (
@@ -21,7 +23,7 @@ export const Image = ({
       src={src}
       alt={alt}
       onError={handleError}
-      className={className}
+      className={classes}
       {...rest}
     />
   )

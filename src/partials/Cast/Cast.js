@@ -4,10 +4,10 @@ import { API_IMG_BASE_PATH } from '../../utils/constants/api'
 import { PROFILE_SIZE } from '../../utils/constants/media'
 import { castSwiperConfig } from '../../utils/config/carousel-config'
 import { Image } from '../../components/Image/Image'
-import fallbackImage from '../../images/cast-fallback.png'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
 import { Section } from '../../containers/Section/Section'
+import { PhotographIcon } from '@heroicons/react/solid'
 
 export const Cast = ({ mediaType, mediaId }) => {
   const { cast, isError, error } = useCast(mediaType, mediaId)
@@ -16,7 +16,7 @@ export const Cast = ({ mediaType, mediaId }) => {
     throw new Error(`An error ocurred rendering Cast: ${error}`)
   }
 
-  if (!cast.length) return null
+  if (!cast?.length) return null
 
   return (
     <Section title='Cast'>
@@ -34,13 +34,14 @@ export const Cast = ({ mediaType, mediaId }) => {
             <SwiperSlide key={person.id}>
               <Card key={person.id} className='h-full'>
                 <CardHeading className='relative aspect-[2/3] overflow-hidden'>
-                  <Image
-                    className='w-full object-cover aspect-[2/3]'
-                    src={`${API_IMG_BASE_PATH}/${PROFILE_SIZE.MEDIUM}${person.profile_path}`}
-                    fallback={fallbackImage}
-                    alt={person.name}
-                    loading='lazy'
-                  />
+                  {person.profile_path
+                    ? <Image
+                        className='w-full object-cover aspect-[2/3]'
+                        src={`${API_IMG_BASE_PATH}/${PROFILE_SIZE.MEDIUM}${person.profile_path}`}
+                        alt={person.name}
+                        loading='lazy'
+                      />
+                    : <PhotographIcon className='absolute top-2/4 -translate-y-2/4 text-gray-400' />}
                 </CardHeading>
                 <CardBody>
                   <p className='font-medium text-md mb-1'>{person.name}</p>
