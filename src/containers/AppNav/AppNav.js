@@ -2,12 +2,10 @@ import { MenuIcon, XIcon } from '@heroicons/react/solid'
 import clsx from 'clsx'
 import { useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { useAuth } from '../../context/auth-context'
 import { NAV_ITEMS } from '../../utils/config/nav-items'
 import { useOutsideClick } from '../../utils/hooks/use-outside-click'
 import { Searcher } from '../Searcher/Searcher'
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle'
-import { Button } from '../../components/UI/Button/Button'
 
 const AppNavLink = ({ props }) => {
   return (
@@ -39,10 +37,6 @@ const Menu = ({ props }) => {
 export const AppNav = () => {
   const [isOpen, setIsOpen] = useState(false)
   const mobileMenuRef = useRef()
-  const authState = useAuth()
-
-  console.log(JSON.stringify(authState))
-  const { isAuthenticated, login, logout } = authState
 
   useOutsideClick(mobileMenuRef, () => {
     if (isOpen) setIsOpen(false)
@@ -84,9 +78,7 @@ export const AppNav = () => {
           <div className='hidden ml-4 md:block relative w-auto' id='desktop-menu'>
             <Menu />
           </div>
-          {isAuthenticated ? <Button onClick={logout}>logout</Button> : <Button onClick={login}>login</Button>}
         </div>
-
       </div>
     </nav>
   )

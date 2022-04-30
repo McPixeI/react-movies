@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { AuthProvider } from './auth-context'
 import { SearchProvider } from './search-context'
 
 const queryClient = new QueryClient({
@@ -27,11 +26,9 @@ function AppProviders ({ children }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <AuthProvider>
-          <SearchProvider>
-            {children}
-          </SearchProvider>
-        </AuthProvider>
+        <SearchProvider>
+          {children}
+        </SearchProvider>
       </Router>
     </QueryClientProvider>
   )
