@@ -8,12 +8,13 @@ import { Searcher } from '../Searcher/Searcher'
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle'
 
 const AppNavLink = ({ props }) => {
+  console.log('props' + JSON.stringify(props))
   return (
     <NavLink
       to={props.to}
       className={({ isActive }) => {
         return 'block py-2 px-2 text-gray-700 hover:text-gray-900 dark:text-gray-400 md:dark:hover:text-white dark:hover:text-white' +
-        (isActive ? ' text-primary dark:text-primary' : '')
+        (isActive ? ' text-primary/100 dark:text-primary' : '')
       }}
     >{props.label}
     </NavLink>
