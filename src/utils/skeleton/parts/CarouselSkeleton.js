@@ -1,5 +1,4 @@
 import { SwiperSlide } from 'swiper/react'
-import { Card, CardBody } from '../../components/UI/Card/Card'
 import { MediaItemSkeleton } from './MediItemSkeleton'
 
 export const CarouselSkeleton = ({ slides = 5 }) => {

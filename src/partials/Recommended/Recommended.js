@@ -4,7 +4,7 @@ import { Navigation } from 'swiper'
 import { defaultSwiperConfig } from '../../utils/config/carousel-config'
 import { MediaItem } from '../../components/MediaItem/MediaItem'
 import { useSkeleton } from '../../utils/hooks/use-skeleton'
-import { MediaItemSkeleton } from '../../utils/skeleton/MediItemSkeleton'
+import { MediaItemSkeleton } from '../../utils/skeleton/parts/MediItemSkeleton'
 import { useId } from 'react'
 import { ErrorBox } from '../../components/ErrorBox/ErrorBox'
 

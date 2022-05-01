@@ -1,13 +1,12 @@
 import { API_IMG_BASE_PATH } from '../../utils/constants/api'
 import { BACKDROP_SIZE } from '../../utils/constants/media'
-import { Section } from '../../containers/Section/Section'
 import { Badge } from '../../components/UI/Badge/Badge'
 import { useMedia } from '../../queries/use-media'
 import { Rating } from '../../components/UI/Rating/Rating'
 import { Image } from '../../components/Image/Image'
 import { PhotographIcon } from '@heroicons/react/solid'
-import { DetailsSkeleton } from '../../utils/skeleton/DetailsSkeleton'
 import { ErrorBox } from '../../components/ErrorBox/ErrorBox'
+import { DetailsSkeleton } from '../../utils/skeleton/parts/DetailsSkeleton'
 
 export const Details = ({ mediaType, mediaId }) => {
   const { data, isLoading, isError } = useMedia(mediaType, mediaId)

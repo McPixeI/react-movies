@@ -8,6 +8,7 @@ import { Recommended } from '../partials/Recommended/Recommended'
 import { Details } from '../partials/Details/Details'
 import { Container } from '../containers/Container/Container'
 import { Section } from '../containers/Section/Section'
+import { MediaPageSkeleton } from '../utils/skeleton/pages/MediaPageSkeleton'
 
 export const MediaPage = () => {
   const { mediaType, mediaId } = useParams()
@@ -15,7 +16,7 @@ export const MediaPage = () => {
   const { data, status } = useMedia(mediaType, mediaId)
 
   if (status === STATUSES.LOADING) {
-    return <Spinner />
+    return <MediaPageSkeleton />
   }
 
   if (status === STATUSES.ERROR) {

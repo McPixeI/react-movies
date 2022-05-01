@@ -7,10 +7,10 @@ import { Image } from '../../components/Image/Image'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
 import { PhotographIcon } from '@heroicons/react/solid'
-import { MediaItemSkeleton } from '../../utils/skeleton/MediItemSkeleton'
 import { useId } from 'react'
 import { useSkeleton } from '../../utils/hooks/use-skeleton'
 import { ErrorBox } from '../../components/ErrorBox/ErrorBox'
+import { MediaItemSkeleton } from '../../utils/skeleton/parts/MediItemSkeleton'
 
 export const Cast = ({ mediaType, mediaId }) => {
   const { cast, isError, isLoading, isSuccess } = useCast(mediaType, mediaId)

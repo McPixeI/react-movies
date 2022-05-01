@@ -1,4 +1,4 @@
-import { Card, CardBody } from '../../components/UI/Card/Card'
+import { Card, CardBody } from '../../../components/UI/Card/Card'
 
 export const MediaItemSkeleton = () => {
   return (
