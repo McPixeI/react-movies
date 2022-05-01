@@ -29,10 +29,13 @@ export const Recommended = ({ mediaType, mediaId }) => {
           <MediaItemSkeleton />
         </SwiperSlide>)}
 
-      {isSuccess && medias?.map(media =>
-        <SwiperSlide key={media.id}>
-          <MediaItem media={media} />
-        </SwiperSlide>)}
+      {isSuccess && (medias.length > 0
+        ? medias.map(media =>
+          <SwiperSlide key={media.id}>
+            <MediaItem media={media} />
+          </SwiperSlide>
+          )
+        : <ErrorBox type='recommended' />)}
     </Swiper>
   )
 }

@@ -33,28 +33,30 @@ export const Cast = ({ mediaType, mediaId }) => {
           <MediaItemSkeleton />
         </SwiperSlide>)}
 
-      {isSuccess && cast.map(person => {
-        return (
-          <SwiperSlide key={person.id}>
-            <Card key={person.id} className='h-full'>
-              <CardHeading className='relative aspect-[2/3] overflow-hidden'>
-                {person.profile_path
-                  ? <Image
-                      className='w-full object-cover aspect-[2/3]'
-                      src={`${API_IMG_BASE_PATH}/${PROFILE_SIZE.MEDIUM}${person.profile_path}`}
-                      alt={person.name}
-                      loading='lazy'
-                    />
-                  : <PhotographIcon className='absolute top-2/4 -translate-y-2/4 text-gray-400' />}
-              </CardHeading>
-              <CardBody>
-                <p className='font-medium text-md mb-1'>{person.name}</p>
-                <p className='font-normal text-sm'>{person.character && `"${person.character}"`}</p>
-              </CardBody>
-            </Card>
-          </SwiperSlide>
-        )
-      })}
+      {isSuccess && (cast.length > 0
+        ? cast.map(person => {
+            return (
+              <SwiperSlide key={person.id}>
+                <Card key={person.id} className='h-full'>
+                  <CardHeading className='relative aspect-[2/3] overflow-hidden'>
+                    {person.profile_path
+                      ? <Image
+                          className='w-full object-cover aspect-[2/3]'
+                          src={`${API_IMG_BASE_PATH}/${PROFILE_SIZE.MEDIUM}${person.profile_path}`}
+                          alt={person.name}
+                          loading='lazy'
+                        />
+                      : <PhotographIcon className='absolute top-2/4 -translate-y-2/4 text-gray-400' />}
+                  </CardHeading>
+                  <CardBody>
+                    <p className='font-medium text-md mb-1'>{person.name}</p>
+                    <p className='font-normal text-sm'>{person.character && `"${person.character}"`}</p>
+                  </CardBody>
+                </Card>
+              </SwiperSlide>
+            )
+          })
+        : <ErrorBox type='cast' />)}
     </Swiper>
   )
 }
