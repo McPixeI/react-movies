@@ -7,13 +7,12 @@ import { Cast } from '../partials/Cast/Cast'
 import { Recommended } from '../partials/Recommended/Recommended'
 import { Details } from '../partials/Details/Details'
 import { Container } from '../containers/Container/Container'
+import { Section } from '../containers/Section/Section'
 
 export const MediaPage = () => {
   const { mediaType, mediaId } = useParams()
 
   const { data, status } = useMedia(mediaType, mediaId)
-
-  console.log(data)
 
   if (status === STATUSES.LOADING) {
     return <Spinner />
@@ -28,8 +27,12 @@ export const MediaPage = () => {
       <Hero media={data} />
       <Container>
         <Details mediaId={mediaId} mediaType={mediaType} />
-        <Cast mediaId={mediaId} mediaType={mediaType} />
-        <Recommended mediaId={mediaId} mediaType={mediaType} />
+        <Section title='Cast'>
+          <Cast mediaId={mediaId} mediaType={mediaType} />
+        </Section>
+        <Section title='Recommended'>
+          <Recommended mediaId={mediaId} mediaType={mediaType} />
+        </Section>
       </Container>
     </>
   )
