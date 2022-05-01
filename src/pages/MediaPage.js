@@ -26,7 +26,9 @@ export const MediaPage = () => {
     <>
       <Hero media={data} />
       <Container>
-        <Details mediaId={mediaId} mediaType={mediaType} />
+        <Section>
+          <Details mediaId={mediaId} mediaType={mediaType} />
+        </Section>
         <Section title='Cast'>
           <Cast mediaId={mediaId} mediaType={mediaType} />
         </Section>
