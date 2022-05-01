@@ -49,17 +49,21 @@ export const Details = ({ mediaType, mediaId }) => {
         <div className='flex mb-4'>
 
           <span className='flex items-center'>
-            <Rating count={voteAverage?.toFixed(1)} />
+            {voteAverage && <Rating count={voteAverage?.toFixed(1)} />}
             {voteAverage && <Badge className='ml-2'>{voteAverage?.toFixed(1)}</Badge>}
             {voteCount && <span className='ml-1 text-sm'>{`(${voteCount} reviews)`} </span>}
           </span>
         </div>
         <ul>
           {releaseDate && <li className='mb-1'><span className='text-gray-500 font-medium'>Release date: </span>{releaseDate}</li>}
-          {budget && <li className='mb-1'><span className='text-gray-500 font-medium'>Budget: </span>{budget}</li>}
-          {revenue && <li className='mb-1'><span className='text-gray-500 font-medium'>Revenue: </span> {revenue}</li>}
+          {budget > 0 && <li className='mb-1'><span className='text-gray-500 font-medium'>Budget: </span>{`${budget} $`}</li>}
+          {revenue > 0 && <li className='mb-1'><span className='text-gray-500 font-medium'>Revenue: </span>{`${revenue} $`}</li>}
           {runtime && <li className='mb-1'><span className='text-gray-500 font-medium'>Run time: </span>{`${runtime} min`}</li>}
-          {production && <li className='mb-1'><span className='text-gray-500 font-medium'>Production: </span> {production.map(prod => `${prod.name}, `)}</li>}
+          {production &&
+            <li className='mb-1'>
+              <span className='text-gray-500 font-medium'>Production: </span>
+              {production.map((prod, index) => (index ? ', ' : '') + prod.name)}
+            </li>}
         </ul>
       </div>
     </div>
