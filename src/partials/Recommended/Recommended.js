@@ -4,20 +4,29 @@ import { Navigation } from 'swiper'
 import { defaultSwiperConfig } from '../../utils/config/carousel-config'
 import { MediaItem } from '../../components/MediaItem/MediaItem'
 import { Section } from '../../containers/Section/Section'
+import { useSkeleton } from '../../utils/hooks/use-skeleton'
+import { MediaItemSkeleton } from '../../utils/skeleton/MediItemSkeleton'
+import { useId } from 'react'
 
 export const Recommended = ({ mediaType, mediaId }) => {
-  const { medias, isError, error } = useRecommendations(mediaType, mediaId)
+  const { medias, isError, isLoading, isSuccess } = useRecommendations(mediaType, mediaId)
+  const skeletons = useSkeleton(5, 'recommended')
 
   if (isError) {
-    throw new Error(`An error ocurred rendering Cast: ${error}`)
+    // TODO: Extract to component
+    return (
+      <Section title='Recommended'>
+        <div role='alert' className='h-[460px] flex items-center justify-center'>
+          <p>Sorry, we could not retrieve cast info</p>
+        </div>
+      </Section>
+    )
   }
-
-  if (!medias.length) return null
 
   return (
     <Section title='Recommended'>
       <Swiper
-        key={medias.length} // Key for rerendering swiper when cast array changes
+        key={useId} // Key for rerendering swiper when cast array changes
         navigation
         modules={[Navigation]}
         slidesPerView={2}
@@ -25,7 +34,12 @@ export const Recommended = ({ mediaType, mediaId }) => {
         breakpoints={defaultSwiperConfig}
         grabCursor
       >
-        {medias?.map(media =>
+        {isLoading && skeletons.map(skeleton =>
+          <SwiperSlide key={skeleton.id}>
+            <MediaItemSkeleton />
+          </SwiperSlide>)}
+
+        {isSuccess && medias?.map(media =>
           <SwiperSlide key={media.id}>
             <MediaItem media={media} />
           </SwiperSlide>)}

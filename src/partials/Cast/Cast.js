@@ -8,20 +8,29 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
 import { Section } from '../../containers/Section/Section'
 import { PhotographIcon } from '@heroicons/react/solid'
+import { MediaItemSkeleton } from '../../utils/skeleton/MediItemSkeleton'
+import { useId } from 'react'
+import { useSkeleton } from '../../utils/hooks/use-skeleton'
 
 export const Cast = ({ mediaType, mediaId }) => {
-  const { cast, isError, error } = useCast(mediaType, mediaId)
+  const { cast, isError, isLoading, isSuccess } = useCast(mediaType, mediaId)
+  const skeletons = useSkeleton(6, 'cast')
 
   if (isError) {
-    throw new Error(`An error ocurred rendering Cast: ${error}`)
+    // TODO: Extract to component
+    return (
+      <Section title='Cast'>
+        <div role='alert' className='h-[420px] flex items-center justify-center'>
+          <p>Sorry, we could not retrieve cast info</p>
+        </div>
+      </Section>
+    )
   }
-
-  if (!cast?.length) return null
 
   return (
     <Section title='Cast'>
       <Swiper
-        key={cast.length} // Key for rerendering swiper when cast array changes
+        key={useId} // Key to force re-rendering swiper when cast array changes
         navigation
         modules={[Navigation]}
         slidesPerView={3}
@@ -29,7 +38,12 @@ export const Cast = ({ mediaType, mediaId }) => {
         breakpoints={castSwiperConfig}
         grabCursor
       >
-        {cast.map(person => {
+        {isLoading && skeletons.map(skeleton =>
+          <SwiperSlide key={skeleton.id}>
+            <MediaItemSkeleton />
+          </SwiperSlide>)}
+
+        {isSuccess && cast.map(person => {
           return (
             <SwiperSlide key={person.id}>
               <Card key={person.id} className='h-full'>
