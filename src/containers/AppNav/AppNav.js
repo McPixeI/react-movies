@@ -1,7 +1,7 @@
 import { MenuIcon, XIcon } from '@heroicons/react/solid'
 import clsx from 'clsx'
-import { useRef, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { NAV_ITEMS } from '../../utils/config/nav-items'
 import { useOutsideClick } from '../../utils/hooks/use-outside-click'
 import { Searcher } from '../Searcher/Searcher'
@@ -36,11 +36,16 @@ const Menu = ({ props }) => {
 
 export const AppNav = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const location = useLocation()
   const mobileMenuRef = useRef()
 
   useOutsideClick(mobileMenuRef, () => {
     if (isOpen) setIsOpen(false)
   })
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [location])
 
   const mobileMenuClasses = clsx(
     'transition-transform bg-white dark:bg-bgdark shadow-lg fixed inset-y-0 left-0 w-[300px] z-50 md:hidden',
