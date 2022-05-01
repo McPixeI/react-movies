@@ -39,7 +39,7 @@ export const Searcher = () => {
   }
 
   return (
-    <div className='flex items-center mr-6' ref={searchbarRef}>
+    <div className='flex items-center mr-2 sm:mr-6' ref={searchbarRef}>
       <TextInput
         ref={inputRef}
         value={inputValue}

@@ -71,7 +71,7 @@ export const AppNav = () => {
             }}
             data-collapse-toggle='mobile-menu'
             type='button'
-            className='inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none'
+            className='inline-flex items-center p-2 sm:ml-3 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none'
             aria-controls='mobile-menu'
           >
             <span className='sr-only'>Open main menu</span>
