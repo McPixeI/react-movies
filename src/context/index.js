@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, useLocation } from 'react-router-dom'
 import { SearchProvider } from './search-context'
 
 const queryClient = new QueryClient({
@@ -22,10 +22,20 @@ const queryClient = new QueryClient({
   })
 })
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation()
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
+
 function AppProviders ({ children }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
+        <ScrollToTop />
         <SearchProvider>
           {children}
         </SearchProvider>
