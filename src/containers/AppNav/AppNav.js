@@ -8,7 +8,6 @@ import { Searcher } from '../Searcher/Searcher'
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle'
 
 const AppNavLink = ({ props }) => {
-  console.log('props' + JSON.stringify(props))
   return (
     <NavLink
       to={props.to}

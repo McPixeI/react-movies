@@ -1,0 +1,1 @@
+export { PopularMedia } from './PopularMedia'
