@@ -31,11 +31,11 @@ export const Details = ({ mediaType, mediaId }) => {
 
   return (
     <div className=' mx-auto flex flex-wrap'>
-      <div className='hidden sm:block sm:w-1/4 aspect-[2/3] overflow-hidden relative shadow-lg'>
+      <div className='hidden sm:block sm:w-1/4 aspect-[2/3] overflow-hidden relative'>
         {posterPath
           ? <Image
               alt={title || name}
-              className='aspect-[2/3]'
+              className='aspect-[2/3] shadow-lg'
               src={`${API_IMG_BASE_PATH}/${BACKDROP_SIZE.MEDIUM}/${posterPath}`}
             />
           : <PhotographIcon className='absolute top-2/4 -translate-y-2/4 text-gray-400' />}
