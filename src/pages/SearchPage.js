@@ -28,7 +28,9 @@ export const SearchPage = () => {
   /* eslint-disable react/jsx-closing-tag-location */
   return (
     <Container className='min-h-[90vh]'>
-      <h1 className='text-3xl font-semibold mb-6'>{`Search results for: ${query.toLowerCase()}`}</h1>
+      <h1 className='text-3xl font-semibold mb-6'>Search results for:
+        <span className='text-primary block'>{query.toLowerCase()}</span>
+      </h1>
       {status === 'loading'
         ? <Spinner align='center' />
         : <>

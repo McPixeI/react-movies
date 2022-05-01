@@ -48,7 +48,7 @@ export const AppNav = () => {
   }, [location])
 
   const mobileMenuClasses = clsx(
-    'transition-transform bg-white dark:bg-bgdark shadow-lg fixed inset-y-0 left-0 w-[300px] z-50 md:hidden',
+    'transition-transform bg-white dark:bg-bgdark shadow-lg fixed inset-y-0 left-0 w-[300px] z-50 md:hidden font-medium pt-10',
     { 'translate-x-[-300px]': !isOpen },
     { 'translate-x-0': isOpen }
   )
