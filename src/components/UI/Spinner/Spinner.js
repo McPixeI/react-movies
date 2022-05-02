@@ -49,6 +49,6 @@ export const Spinner = ({
 Spinner.propTypes = {
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
   color: PropTypes.oneOf(['primary', 'secondary']),
-  align: PropTypes.oneOf(['left', 'right', 'center']),
+  align: PropTypes.oneOf(['left', 'right', 'center', 'inline']),
   className: PropTypes.string
 }
