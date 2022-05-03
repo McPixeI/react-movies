@@ -5,7 +5,7 @@ export const Hero = ({ media, children, ...rest }) => {
   return (
     <div
       style={{ backgroundImage: `url(${API_IMG_BASE_PATH}/${BACKDROP_SIZE.LARGE}/${media.backdrop_path})`, backgroundSize: 'cover', backgroundPosition: 'top' }}
-      className='w-full h-[40vh] md:h-[50vh] relative overflow-hidden mx-auto flex flex-col md:flex-row items-center py-12 md:py-24 mb-10' {...rest}
+      className='w-full h-[50vh] relative overflow-hidden mx-auto flex flex-col md:flex-row items-center py-12 md:py-24 mb-10' {...rest}
     >
       <div className='absolute bg-gradient-to-t from-bgdark bg-opacity-50 inset-0' />
       <div className='container mx-auto z-10'>

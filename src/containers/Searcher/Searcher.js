@@ -39,7 +39,7 @@ export const Searcher = () => {
   }
 
   return (
-    <div className='flex items-center mr-2 sm:mr-6' ref={searchbarRef}>
+    <div className='flex items-center mr-2 sm:mr-8' ref={searchbarRef}>
       <TextInput
         ref={inputRef}
         value={inputValue}
@@ -48,7 +48,7 @@ export const Searcher = () => {
         size='sm'
         type='search'
         placeholder='Search movies or shows...'
-        className={`absolute w-full top-0 left-0 py-6 z-50 rounded-none md:rounded-md md:py-4 md:top-0 md:relative ${isShown ? ' top-[74px] md:w-60 visible ' : 'md:w-0 invisible'}`}
+        className={`absolute w-full top-0 left-0 py-6 z-50 rounded-none lg:rounded-md lg:py-4 lg:top-0 lg:relative ${isShown ? ' top-[74px] lg:w-60 visible ' : 'lg:w-0 invisible'}`}
       />
       <div
         className='cursor-pointer px-2 ml-2 text-gray-700 hover:text-gray-900 md:p-0 dark:text-gray-400 md:dark:hover:text-white '
