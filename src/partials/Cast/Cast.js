@@ -50,7 +50,6 @@ export const Cast = ({ mediaType, mediaId }) => {
                   </CardHeading>
                   <CardBody>
                     <p className='font-medium text-md mb-1'>{person.name}</p>
-                    <p className='font-normal text-sm'>{person.character && `"${person.character}"`}</p>
                   </CardBody>
                 </Card>
               </SwiperSlide>
