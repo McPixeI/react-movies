@@ -49,7 +49,7 @@ export const Cast = ({ mediaType, mediaId }) => {
                       : <PhotographIcon className='absolute top-2/4 -translate-y-2/4 text-gray-400' />}
                   </CardHeading>
                   <CardBody>
-                    <p className='font-medium text-md'>{person.name}</p>
+                    <p className='font-medium text-sm sm:text-md'>{person.name}</p>
                   </CardBody>
                 </Card>
               </SwiperSlide>
