@@ -9,7 +9,7 @@ export const Hero = ({ media, children, ...rest }) => {
     >
       <div className='absolute bg-gradient-to-t from-bgdark bg-opacity-50 inset-0' />
       <div className='container mx-auto z-10'>
-        <div className=' flex flex-col w-full lg:w-1/2 justify-center items-start px-4 pt-12 pb-20'>
+        <div className=' flex flex-col w-full lg:w-1/2 justify-center items-start px-4 pt:8 pb-12 sm:pt-12 sm:pb-20'>
           <h1 className='font-bold text-white text-4xl my-4'>{media.title || media.name}</h1>
           <p className='leading-normal mb-4 text-white'>{media.overview}</p>
           {children}
