@@ -24,7 +24,7 @@ export const MediaItem = ({ media, mediaType }) => {
         <CardHeading className='aspect-[2/3] overflow-hidden relative'>
           {posterPath
             ? <Image
-                className='hover:scale-105 transition-transform duration-300'
+                className='aspect-[2/3] hover:scale-105 transition-transform duration-300'
                 src={`${API_IMG_BASE_PATH}/${POSTER_SIZE.MEDIUM}/${posterPath}`}
                 alt={`${mediaName} poster`}
                 loading='lazy'
