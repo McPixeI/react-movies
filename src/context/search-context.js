@@ -6,10 +6,10 @@ export const SearchContext = createContext()
 SearchContext.displayName = 'SearchContext'
 
 const SearchProvider = ({ children }) => {
-  const [query, setQuery] = useState('')
   const [isShown, setIsShown] = useState(false)
   const [params] = useSearchParams()
   const queryString = params.get('q')
+  const [query, setQuery] = useState(queryString)
 
   /* MEMO: Allows to enter a search directly from url
   and prevents to change query on every keypress if searchbar is shown */
