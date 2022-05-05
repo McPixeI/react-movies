@@ -14,7 +14,7 @@ export const useSearch = (query) => {
   const isSearchRoute = useMatch('/search')
 
   const result = useInfiniteQuery(['search-media', { query }], ({ pageParam = 1 }) => getSearch(query, pageParam), {
-    enabled: Boolean(isSearchRoute && query.length > 0),
+    enabled: Boolean(isSearchRoute && query?.length > 0),
     getNextPageParam: (lastPage, allPages) => {
       const maxPages = lastPage.total_pages
       const nextPage = allPages.length + 1
