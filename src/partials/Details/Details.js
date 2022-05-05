@@ -44,7 +44,7 @@ export const Details = ({ mediaType, mediaId }) => {
         <h2 className='text-sm title-font text-gray-500 tracking-widest'>Details</h2>
         <h1 className='text-3xl title-font font-medium mb-1'>{title || name}</h1>
         <div className='mb-3'>
-          {genres && genres.map(genre => <Badge key={genre.id} variant='secondary'>{genre.name}</Badge>)}
+          {genres && genres.map(genre => <Badge className='inline-block mb-1' key={genre.id} variant='secondary'>{genre.name}</Badge>)}
         </div>
         <div className='flex mb-4'>
 

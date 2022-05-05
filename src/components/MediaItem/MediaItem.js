@@ -5,6 +5,7 @@ import Badge from '../UI/Badge'
 import { Link } from 'react-router-dom'
 import { Image } from '../Image/Image'
 import { PhotographIcon } from '@heroicons/react/solid'
+import { Rating } from '../../components/UI/Rating/Rating'
 
 export const MediaItem = ({ media, mediaType }) => {
   const {
