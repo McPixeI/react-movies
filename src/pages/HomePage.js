@@ -8,6 +8,7 @@ import { Trending } from '../partials/Trending/Trending'
 import { Container } from '../containers/Container/Container'
 import { HomePageSkeleton } from '../utils/skeleton/pages/HomePageSkeleton'
 import { HeroSkeleton } from '../utils/skeleton/parts/HeroSkeleton'
+import { InformationCircleIcon } from '@heroicons/react/outline'
 
 export const HomePage = () => {
   const { medias, isError, isLoading } = useTrendingMedia(API_MEDIA_TYPE.MOVIE)
@@ -27,7 +28,10 @@ export const HomePage = () => {
       {cover
         ? <Hero media={cover}>
           <Link to={`/${cover?.media_type}/${cover?.id}`}>
-            <Button>Ver detalles</Button>
+            <Button>
+              <InformationCircleIcon className='h-5 w-5 mr-1 -mt-1 inline-flex' />
+              Details
+            </Button>
           </Link>
         </Hero>
         : <HeroSkeleton />}
