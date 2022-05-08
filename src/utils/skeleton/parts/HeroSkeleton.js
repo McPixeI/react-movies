@@ -1,7 +1,7 @@
 export const HeroSkeleton = () => {
   return (
     <div
-      className='opacity-60 animate-pulse w-full h-[54vh] relative overflow-hidden mx-auto flex flex-col md:flex-row items-center py-12 md:py-24 mb-10 bg-gray-700 dark:bg-gray-700'
+      className='opacity-60 animate-pulse w-full h-[60vh] md:h-[54vh] relative overflow-hidden mx-auto flex flex-col md:flex-row items-center py-12 md:py-24 mb-10 bg-gray-700 dark:bg-gray-700'
     >
       <div className='absolute bg-gradient-to-t from-bgdark bg-opacity-50 inset-0' />
       <div className='container mx-auto z-10'>

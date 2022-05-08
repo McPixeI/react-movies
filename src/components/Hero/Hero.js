@@ -10,7 +10,7 @@ export const Hero = ({ media, children, ...rest }) => {
   return (
     <div
       style={{ backgroundImage: `url(${API_IMG_BASE_PATH}/${BACKDROP_SIZE.LARGE}/${backdropPath})`, backgroundSize: 'cover', backgroundPosition: 'top' }}
-      className='w-full h-[54vh] relative overflow-hidden mx-auto flex flex-col md:flex-row items-center py-12 md:py-24 mb-10' {...rest}
+      className='w-full h-[60vh] md:h-[54vh] relative overflow-hidden mx-auto flex flex-col md:flex-row items-center py-12 md:py-24 mb-10' {...rest}
     >
       <div className='absolute bg-gradient-to-t from-bgdark bg-opacity-50 inset-0' />
       <div className='container mx-auto z-10'>
