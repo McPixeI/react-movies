@@ -32,6 +32,7 @@
 * react-error-boundary
 * @testing-library
 * @heroicons
+* Swiper
 * TMDB API
 
 ## Some features:
@@ -39,6 +40,7 @@
 * Dark/light mode
 * Custom UI components made with Tailwind
 * Unit testing for UI components
+* Usage of react-query for managing server state
 * Usage of skeletons aproach for loading states
 * Usage of Error boundaries
 * Manage of localStorage
