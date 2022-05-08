@@ -1,10 +1,12 @@
 <div>
-  <h1 align="center"><a href="https://cozy-cucurucho-1b993a.netlify.app/">Live Demo</a></h1>
+  <h1 align="center"><a href="https://cozy-cucurucho-1b993a.netlify.app/"> React Movies Demo</a></h1>
   <strong>
-    React Movies App
+    Description
   </strong>
   <p>
     This is a React movies project, based on TMDB made for educational purposes.
+  </p>
+  <p>
     This application is made from scratch using a variety of tools and techniques that
     i wanted to learn or improve knwoledge about.
   </p>
@@ -18,10 +20,6 @@
 </div>
 
 <hr />
-
-[![Build Status][build-badge]][build]
-[![All Contributors][all-contributors-badge]](#contributors)
-[![GPL 3.0 License][license-badge]][license]
 
 ## Built with:
 
@@ -45,7 +43,7 @@
 * Usage of Error boundaries
 * Manage of localStorage
 * Debounced global search on keypress with controlled routing
-* API calls management
+* API consumption
 
 ## Demo
 
